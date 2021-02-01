@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <style>
+/* set font family for page */
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: darkorchid;
+}
+
+/* display list with menu headings horizontally*/
+li {
+  float: left;
+}
+
+/* style for menu headings (dropbtn), links in list items */
+li a, .dropbtn {
+  display: inline-block;
+  color: lavenderblush;
+  background-color: darkorchid;
+  text-align: left;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  width: 110px;
+  text-decoration: none;
+  border: none;
+}
+
+/* set font size for headings so it matches links in menu items */
+.dropbtn {
+    font-size: 16px;
+}
+
+li.dropdown {
+  display: inline-block;
+  border-right: 1px solid orchid;
+}
+
+/* don't display dropdowns by default, fix position */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: darkorchid;
+}
+
+/* styles for link content of dropdowns */
+.dropdown-content a {
+  color: lavenderblush;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100px;
+}
+
+/*on hover, display menu*/
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* styling for text blurb */
+.blurb {
+    border-radius: 10px;
+    border: 1px solid lightskyblue;
+    background-color: aliceblue;
+    margin: 30px;
+    padding: 30px;
+}
+    </style>
+    <body>
+        <ul>
+            <li class="dropdown">
+                <button class="dropbtn">File</button>
+                <div class="dropdown-content">
+                    <a href="#">Open</a>
+                    <a href="#">Save</a>
+                    <a href="#">Print</a>
+                    <a href="#">Exit</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropbtn">Edit</button>  
+                <div class="dropdown-content">
+                    <a href="#">Copy</a>
+                    <a href="#">Cut</a>
+                    <a href="#">Paste</a>
+                    <hr />
+                    <a href="#">Format</a>
+                </div>
+            <li class="dropdown">
+              <button class="dropbtn">Help</button>  
+              <div class="dropdown-content">
+                <a href="#">About</a>
+              </div>
+            </li>
+          </ul>
+
+          <div class="blurb">
+              <h1>This is my dropdown menu example.</h1>
+              <h2>It was vastly irritating to create.</h2>
+              <p>I think perhaps I also need some text here... <br />
+            The quick brown fox jumped over the lazy dog!</p>
+
+          </div>
+    </body>
+</head>
