@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <button class="button is-primary">Submit</button>
+            <button class="button is-info">Submit</button>
         </form>
     </section>
 </template>

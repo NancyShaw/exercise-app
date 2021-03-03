@@ -11,7 +11,7 @@
               
                 <div id="navbarBasicExample" class="navbar-menu">
                   <div class="navbar-start">
-                    <router-link to="/" class="navbar-item">
+                    <router-link to="/home" class="navbar-item">
                       Home
                     </router-link>
 
@@ -42,16 +42,16 @@
                           Report an issue
                         </router-link>
                         <hr class="navbar-divider">
-                        <a class="navbar-item">
+                        <router-link to="/" class="navbar-item">
                           Sign Out
-                        </a>
+                        </router-link>
                       </div>
                     </div>
                   </div>
                   <div class="navbar-end">
-                    <a class="navbar-item">
-                      Placeholder
-                    </a>
+                    <router-link to="/" class="navbar-item">
+                      Sign Out
+                    </router-link>
                   </div>
                 </div>
               </nav>
