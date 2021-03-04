@@ -2,14 +2,9 @@
   <section class="section">
             <div class="columns is-mobile">
                 <div class="column is-one-half">
-                    <div class="box has-background-link-light has-text-link-dark">
-                        <h2>My Goals</h2>
-                        <ul>
-                            <li>Placeholders for now for spacing</li>
-                            <li>Run Fast</li>
-                            <li>Lift Things</li>
-                            <li>Stretch</li>
-                        </ul>
+                    <myGoals />
+                    <div class="box">
+                        Placeholder for where graph showing daily exercise will go.
                     </div>
                 </div>
                 <div class="column is-one-half">
@@ -28,7 +23,11 @@
 </template>
 
 <script>
+import myGoals from "../components/CurrentGoals"
 export default {
+    components: {
+        myGoals
+    }
 
 }
 </script>

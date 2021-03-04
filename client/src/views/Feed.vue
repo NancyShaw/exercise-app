@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-      <h1 class="title is-1">Profile</h1>
-      
-      <h3>Other Profile Info</h3>
-
+      <p>View for displaying friend's public content</p>
   </div>
 </template>
 

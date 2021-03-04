@@ -15,12 +15,20 @@
                       Home
                     </router-link>
 
-                    <router-link to="/Profile" class="navbar-item">
-                      Profile
+                    <router-link to="/Goals" class="navbar-item">
+                      Goals
                     </router-link>
               
                     <router-link to="/ActivityDetails" class="navbar-item">
                       Activity Details
+                    </router-link>
+
+                    <router-link to="/Feed" class="navbar-item">
+                      Feed
+                    </router-link>
+
+                    <router-link to="/Friends" class="navbar-item">
+                      Friends
                     </router-link>
               
                     <div class="navbar-item has-dropdown is-hoverable">
@@ -49,6 +57,12 @@
                     </div>
                   </div>
                   <div class="navbar-end">
+                    <router-link to="/Profile" class="navbar-item">
+                      Profile
+                    </router-link>
+                    <router-link to="/Admin" class="navbar-item">
+                      Admin
+                    </router-link>
                     <router-link to="/" class="navbar-item">
                       Sign Out
                     </router-link>

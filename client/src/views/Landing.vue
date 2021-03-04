@@ -11,6 +11,7 @@
                         Login
                         </router-link>
                     </div>
+                    <p class="help">Forgot password?</p>
                 </div>
 
                 <p>Don't have an account yet?</p>

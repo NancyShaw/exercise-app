@@ -1,6 +1,7 @@
 <template>
   <section class="section">
         <form class="box">
+            <p>Record Daily Exercise</p>
             <div class="field">
                 <label class="label">Type of Exercise</label>
                 <div>
