@@ -1,6 +1,7 @@
 <template>
   <section class="section">
         <form class="box">
+            <p>Record Daily Exercise</p>
             <div class="field">
                 <label class="label">Type of Exercise</label>
                 <div>
@@ -15,7 +16,7 @@
                 </div>
             </div>
 
-            <button class="button is-primary">Submit</button>
+            <button class="button is-info">Submit</button>
         </form>
     </section>
 </template>
