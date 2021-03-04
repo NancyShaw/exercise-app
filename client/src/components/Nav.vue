@@ -43,9 +43,7 @@
                         <router-link to="/Documentation" class="navbar-item">
                           Documentation
                         </router-link>
-                        <a class="navbar-item">
-                          Help/Contact
-                        </a>
+                        
                         <router-link to="/Issue" class="navbar-item">
                           Report an issue
                         </router-link>

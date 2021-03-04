@@ -1,8 +1,41 @@
 <template>
   <div class="container">
-      <h1 class="title is-1">Profile</h1>
       
-      <h3>Other Profile Info</h3>
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title has-background-link has-text-link-light">
+            Profile info
+          </p>
+        </header>
+        <div class="card-content has-background-link-light has-text-link-dark">
+          <div class="content">
+            
+            <div>Name</div>
+            <div>Username</div>
+            <div>Email</div>
+            <div>Photo</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="box">
+            <div class="field">
+                <p>Edit Profile info</p>
+                <label class="label">Change email address for this account</label>
+                <div>
+                    <input class="input" type="email" placeholder="someone@somewhere.com" />
+                </div>
+                <p class="help">Must be a valid email address</p>
+            </div>
+            <div class="field">
+                <label class="label">Change your profile Picture</label>
+                <div>
+                    <input class="input" type="text" placeholder="Picture URL" />
+                </div>
+            </div>
+
+            <button class="button is-info">Submit</button>
+        </form>
 
   </div>
 </template>
