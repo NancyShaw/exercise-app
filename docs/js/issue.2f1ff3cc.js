@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["issue"],{"1b10":function(e,s,t){"use strict";t.r(s);var n=function(){var e=this,s=e.$createElement;e._self._c;return e._m(0)},i=[function(){var e=this,s=e.$createElement,t=e._self._c||s;return t("div",{staticClass:"container"},[t("h3",{staticClass:"is-3"},[e._v("To report a possible issue, please follow these directions:")])])}],l={},a=l,r=t("2877"),c=Object(r["a"])(a,n,i,!1,null,null,null);s["default"]=c.exports}}]);
+//# sourceMappingURL=issue.2f1ff3cc.js.map

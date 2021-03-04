@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["admin"],{3530:function(n,t,e){"use strict";e.r(t);var i=function(){var n=this,t=n.$createElement;n._self._c;return n._m(0)},a=[function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("div",{staticClass:"container"},[e("h1",{staticClass:"title is-h1"},[n._v("Admin page")]),e("p",[n._v("Eventually this page will only display if user is an admin.")])])}],s={},l=s,c=e("2877"),r=Object(c["a"])(l,i,a,!1,null,null,null);t["default"]=r.exports}}]);
+//# sourceMappingURL=admin.d09f8c69.js.map
