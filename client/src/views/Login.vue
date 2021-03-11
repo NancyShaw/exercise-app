@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <form id="login">
+      <form @submit.prevent="login" id="login">
         <div class="field">
             <div class="control has-icons-left has-icons-right">
                 <input class="input" type="text" placeholder="Username">
@@ -39,7 +39,13 @@
 </template>
 
 <script>
+import { Login } from "../models/Session"
 export default {
+    methods: {
+        login() {
+            Login();
+        }
+    }
 
 }
 </script>
