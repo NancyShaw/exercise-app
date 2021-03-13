@@ -1,24 +1,35 @@
 <template>
   <div class="container">
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title has-background-link has-text-link-light">
+      <article class="panel is-info">
+        <p class="panel-heading">
             Current Goals
-          </p>
-        </header>
-        <div class="card-content has-background-link-light has-text-link-dark">
-          <div class="content">
+        </p>
+        <div class="panel-block">
             
-            <div>Total Daily Exercise Goal: </div>
-            <div>Other Goals: </div>
-          </div>
+            
+            <span class="icon is-left">
+                <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            {{daily}}
         </div>
-      </div>
+        <p class="panel-block" v-for="(other, i) in otherGoals" :key="i">
+            <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            {{other.goal}}
+        </p>
+    </article>
   </div>
 </template>
 
 <script>
+
 export default {
+  props: {
+    otherGoals: Array,
+    daily: Number
+  }
+  
 
 }
 </script>

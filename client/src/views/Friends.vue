@@ -18,23 +18,18 @@
 
             <button class="button is-info">Submit</button>
         </form>
-        <div class="card">
-        <header class="card-header">
-          <p class="card-header-title has-background-link has-text-link-light">
-            My Friends
-          </p>
-        </header>
-        <div class="card-content has-background-link-light has-text-link-dark">
-          <div class="content">
-            <div>Placeholder for list of friends</div>
-          </div>
-        </div>
-      </div>
+        
+        <friends-list />
+      
   </div>
 </template>
 
 <script>
+import FriendsList from '../components/FriendsList.vue'
 export default {
+  components: {
+    FriendsList
+  }
 
 }
 </script>
