@@ -8,15 +8,9 @@
                     </div>
                 </div>
                 <div class="column is-one-half">
-                    <div class="box has-background-link-light has-text-link-dark">
-                        <h2>My Activity Summary</h2>
-                        <ul>
-                            <li>Placeholders for now</li>
-                            <li>Some Running</li>
-                            <li>Some Lifting</li>
-                            <li>Some Stretching</li>
-                        </ul>
-                    </div>
+                    
+                    <ActivitySummary :activities="activities" :total="total" />
+
                 </div>
             </div>  
         </section>
@@ -25,17 +19,25 @@
 <script>
 import CurrentGoals from "../components/CurrentGoals"
 import { GetOtherGoals, GetDailyGoal } from "../models/Goals";
+import ActivitySummary from "../components/ActivitySummary.vue";
+import { GetActivities, GetTotalTime } from "../models/Activities";
+
 export default {
     data: ()=> ({ 
         otherGoals: [],
-        daily: []
+        daily: [],
+        activities: [],
+        total: []
     }),
     mounted() {
         this.otherGoals = GetOtherGoals();
         this.daily = GetDailyGoal();
+        this.activities = GetActivities();
+        this.total = GetTotalTime();
     },
     components: {
-        CurrentGoals
+        CurrentGoals,
+        ActivitySummary
     }
 
 }
