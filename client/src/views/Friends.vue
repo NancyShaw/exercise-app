@@ -19,14 +19,21 @@
             <button class="button is-info">Submit</button>
         </form>
         
-        <friends-list />
+        <FriendsList :friends="friends" />
       
   </div>
 </template>
 
 <script>
 import FriendsList from '../components/FriendsList.vue'
+import { GetFriends } from "../models/Friends";
 export default {
+  data: ()=> ({
+      friends: []
+  }),
+  mounted() {
+      this.friends = GetFriends();
+  },
   components: {
     FriendsList
   }

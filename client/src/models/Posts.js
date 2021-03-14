@@ -35,7 +35,7 @@ const posts = [
             handle: "@johnsmith",
             pic: "https://bulma.io/images/placeholders/96x96.png"
         }
-    }
+    },
 ];
 
 export function GetMyPosts() {

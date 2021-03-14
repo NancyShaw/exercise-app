@@ -31,31 +31,11 @@ import ContentCard from "../components/ContentCard.vue";
 import ContentCreation from "../components/ContentCreation.vue";
 import FriendsList from '../components/FriendsList.vue';
 import { GetMyPosts } from "../models/Posts";
+import { GetFriends } from "../models/Friends";
 
 export default Vue.extend({
   data: ()=> ({
-        friends: [
-            {
-                handle: "Alpha",
-                src: "https://bulma.io/images/placeholders/128x128.png",
-                alt: "Placeholder image"
-            },
-            {
-                handle: "Beta",
-                src: "https://bulma.io/images/placeholders/128x128.png",
-                alt: "Placeholder image"
-            },
-            {
-                handle: "Gamma",
-                src: "https://bulma.io/images/placeholders/128x128.png",
-                alt: "Placeholder image"
-            },
-            {
-                handle: "Echo",
-                src: "https://bulma.io/images/placeholders/128x128.png",
-                alt: "Placeholder image"
-            }
-        ],
+        friends: [],
         newPost: {
             user: {
             }
@@ -63,6 +43,7 @@ export default Vue.extend({
         posts: []
     }),
     mounted() {
+        this.friends = GetFriends();
         this.posts = GetMyPosts();
     },
     components: {
