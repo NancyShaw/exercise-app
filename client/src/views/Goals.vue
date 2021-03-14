@@ -27,23 +27,18 @@
 
 <script>
 import CurrentGoals from "../components/CurrentGoals.vue";
-//import { GetCurrentGoals } from "../models/Goals";
+import { GetOtherGoals, GetDailyGoal } from "../models/Goals";
 import Vue from "vue";
+
 export default Vue.extend( {
-    data: ()=> ({
-        otherGoals: [
-            {
-                goal: "Goal one"
-            },
-            {
-                goal: "Goal two"
-            }
-        ],
-        daily: 45
+    data: ()=> ({ 
+        otherGoals: [],
+        daily: []
     }),
-   /* mounted() {
-        this.currentGoals = GetCurrentGoals();
-    },*/
+    mounted() {
+        this.otherGoals = GetOtherGoals();
+        this.daily = GetDailyGoal();
+    },
     components: {
         CurrentGoals
     }

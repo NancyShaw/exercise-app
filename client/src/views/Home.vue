@@ -2,7 +2,7 @@
   <section class="section">
             <div class="columns is-mobile">
                 <div class="column is-one-half">
-                    <myGoals />
+                    <CurrentGoals :otherGoals="otherGoals" :daily="daily" />
                     <div class="box">
                         Placeholder for where graph showing daily exercise will go.
                     </div>
@@ -23,10 +23,19 @@
 </template>
 
 <script>
-import myGoals from "../components/CurrentGoals"
+import CurrentGoals from "../components/CurrentGoals"
+import { GetOtherGoals, GetDailyGoal } from "../models/Goals";
 export default {
+    data: ()=> ({ 
+        otherGoals: [],
+        daily: []
+    }),
+    mounted() {
+        this.otherGoals = GetOtherGoals();
+        this.daily = GetDailyGoal();
+    },
     components: {
-        myGoals
+        CurrentGoals
     }
 
 }

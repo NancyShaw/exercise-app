@@ -1,28 +1,23 @@
 /* Holds data related to a user's goals */
 
-const currentGoals = [
+const otherGoals = [
     {
-        daily: 45,
-        other: [{
-            goal: "Get fresh air"
-            },
-            {
-            goal: "Be present in each moment"   
-            }
-        ]
+        goal: "Goal one"
+    },
+    {
+        goal: "Goal two"
     }
 ];
 
-export function GetCurrentGoals() {
-    return currentGoals;
-}
+const daily = 45;
+
 
 export function GetDailyGoal() {
-    return currentGoals.daily;
+    return daily;
 }
 
 export function GetOtherGoals() {
-    return currentGoals.other;
+    return otherGoals;
 }
     
 
