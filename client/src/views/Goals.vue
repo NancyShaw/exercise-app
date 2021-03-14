@@ -3,7 +3,7 @@
       
       <CurrentGoals :otherGoals="otherGoals" :daily="daily"/>
       
-      <form class="box">
+      <form @submit.prevent="$emit('update')" class="box">
             <div class="field">
                 <p>Update Total Daily Exercise Goal</p>
                 <label class="label">Total Daily Exercise Goal</label>
@@ -12,26 +12,24 @@
                 </div>
                 <p class="help">Daily exercise goal in minutes</p>
             </div>
-            <div class="field">
-                <p>Add Goal</p>
-                <label class="label">Goal</label>
-                <div>
-                    <input class="input" type="text" placeholder="Eat more veggies" />
-                </div>
-            </div>
 
             <button class="button is-info">Submit</button>
         </form>
+        
+        <AddGoal :newGoal="newGoal" @add="addGoal" />
+
   </div>
 </template>
 
 <script>
 import CurrentGoals from "../components/CurrentGoals.vue";
+import AddGoal from "../components/AddGoal.vue";
 import { GetOtherGoals, GetDailyGoal } from "../models/Goals";
 import Vue from "vue";
 
 export default Vue.extend( {
     data: ()=> ({ 
+        newGoal: {},
         otherGoals: [],
         daily: []
     }),
@@ -40,7 +38,14 @@ export default Vue.extend( {
         this.daily = GetDailyGoal();
     },
     components: {
-        CurrentGoals
+        CurrentGoals,
+        AddGoal
+    },
+    methods: {
+        addGoal(){
+            this.otherGoals.unshift(this.newGoal);
+            this.newGoal = {};
+        }
     }
     
 })
