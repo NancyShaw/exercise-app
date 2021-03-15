@@ -3,18 +3,15 @@
 const activities = [
     {
         activity: "running",
-        timeMins: 30,
-        date: 2021-3-14
+        timeMins: 30
     },
     {
         activity: "climbing",
-        timeMins: 120,
-        date: 2021-3-14
+        timeMins: 120
     },
     {
         activity: "dance",
-        timeMins: 45,
-        date: 2021-3-14
+        timeMins: 45
     },
 ];
 
@@ -27,4 +24,8 @@ export function GetTotalTime() {
     activities.forEach(a => total+= a.timeMins);
     
     return total;
+}
+
+export function AddActivities(record) {
+    activities.unshift(record);
 }

@@ -1,32 +1,46 @@
 <template>
-  <section class="section">
-        <form class="box">
-            <p>Record Daily Exercise</p>
-            <div class="field">
-                <label class="label">Type of Exercise</label>
-                <div>
-                    <input class="input" type="text" placeholder="Curling" />
-                </div>
+    <section class="section">
+        <div class="columns">
+            <div class="column is-one-half">
+                <AddActivity :newActivity="newActivity" @add="addActivity" />
             </div>
 
-            <div class="field">
-                <label class="label">Number of Minutes Spent</label>
-                <div>
-                    <input class="input" type="number" placeholder="45" />
-                </div>
+            <div class="column is-one-half">
+                <ActivitySummary :activities="activities" :total="total" />
             </div>
 
-            <!-- I'm going to want a field for entering the date here as well -->
-
-            <button class="button is-info">Submit</button>
-        </form>
+        </div>
     </section>
 </template>
 
 <script>
-export default {
+import { GetActivities, GetTotalTime, AddActivities } from "../models/Activities";
+import ActivitySummary from "../components/ActivitySummary.vue";
+import AddActivity from "../components/AddActivity.vue";
+import Vue from "vue";
 
-}
+export default Vue.extend( {
+    data: ()=> ({
+        newActivity: {},
+        activities: [],
+        total: []
+    }),
+    mounted() {
+        this.activities = GetActivities();
+        this.total = GetTotalTime();
+    },
+    components: {
+        ActivitySummary,
+        AddActivity
+    },
+    methods: {
+        addActivity() {
+            AddActivities(this.newActivity);
+        }
+    }
+
+
+})
 </script>
 
 <style>
