@@ -19,6 +19,10 @@ export function GetDailyGoal() {
 export function GetOtherGoals() {
     return otherGoals;
 }
+
+export function UpdateDaily(newDaily) {
+    this.daily = newDaily;
+}
     
 
 
