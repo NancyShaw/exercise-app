@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { GetActivities, GetTotalTime, AddActivities } from "../models/Activities";
+import { GetActivities, AddActivities } from "../models/Activities";
 import ActivitySummary from "../components/ActivitySummary.vue";
 import AddActivity from "../components/AddActivity.vue";
 import Vue from "vue";
@@ -23,11 +23,9 @@ export default Vue.extend( {
     data: ()=> ({
         newActivity: {},
         activities: [],
-        total: []
     }),
     mounted() {
         this.activities = GetActivities();
-        this.total = GetTotalTime();
     },
     components: {
         ActivitySummary,
@@ -36,6 +34,11 @@ export default Vue.extend( {
     methods: {
         addActivity() {
             AddActivities(this.newActivity);
+        }
+    },
+    computed: {
+        total () {
+            return this.activities.reduce((total, a) => total + +a.timeMins, 0);
         }
     }
 

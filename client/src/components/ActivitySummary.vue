@@ -25,7 +25,7 @@
 <script>
 export default {
     props: {
-        activities: Object,
+        activities: Array,
         total: Number
     }
 }

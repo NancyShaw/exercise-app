@@ -9,7 +9,7 @@ const otherGoals = [
     }
 ];
 
-const daily = 45;
+let daily = 45;
 
 
 export function GetDailyGoal() {
@@ -21,7 +21,7 @@ export function GetOtherGoals() {
 }
 
 export function UpdateDaily(newDaily) {
-    this.daily = newDaily;
+    daily = newDaily;
 }
     
 

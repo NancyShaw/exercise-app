@@ -13,7 +13,7 @@
         </div>
 
         <div class="content-item" v-for="(post, i) in posts" :key="i">
-          <ContentCard :post="posts" @delete="deletePost(i)" />
+          <ContentCard :post="post" @delete="deletePost(i)" />
         </div>
       </div>
       <div class="column is-one-quarter">
@@ -30,7 +30,7 @@ import Vue from "vue";
 import ContentCard from "../components/ContentCard.vue";
 import ContentCreation from "../components/ContentCreation.vue";
 import FriendsList from '../components/FriendsList.vue';
-import { GetMyPosts } from "../models/Posts";
+import { GetMyFeed } from "../models/Posts";
 import { GetFriends } from "../models/Friends";
 
 export default Vue.extend({
@@ -44,7 +44,7 @@ export default Vue.extend({
     }),
     mounted() {
         this.friends = GetFriends();
-        this.posts = GetMyPosts();
+        this.posts = GetMyFeed();
     },
     components: {
       ContentCard,

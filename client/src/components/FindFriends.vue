@@ -4,7 +4,7 @@
             <p>Find Friends!</p>
             <label class="label">Search by name</label>
             <div>
-                <input class="input" type="text" placeholder="Red Fraggle" v-model="name" />
+                <input class="input" type="text" placeholder="Red Fraggle" v-model="searchName" />
             </div>
         </div>
 
@@ -14,9 +14,9 @@
 
 <script>
 export default {
-    props: {
-        name: String
-    }
+    data: ()=> ({
+        searchName: String
+    })
 }
 </script>
 

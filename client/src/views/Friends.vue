@@ -3,7 +3,7 @@
         <div class="columns">
             
             <div class="column is-one-half">
-                <FindFriends :name="name" @search="findFriends" />
+                <FindFriends @search="findFriends" />
                 <!-- display search results here -->
                 
             </div>
@@ -23,7 +23,7 @@ import FindFriends from "../components/FindFriends.vue";
 export default {
   data: ()=> ({
       newFriends: [],
-      friends: []
+      friends: [],
   }),
   mounted() {
       this.friends = GetFriends();
@@ -34,7 +34,8 @@ export default {
   },
   methods: {
       findFriends() {
-          this.newFriends = FindNewFriends();
+          //this needs to pass the search name, and use the returned freinds
+          FindNewFriends();
       }
   }
 

@@ -36,11 +36,8 @@
             <div class="field-body">
                 <div class="field">
                 <div class="control">
-                    <input class="input" type="text" placeholder="http://google.com" v-model="newPost.src">
+                    <input class="input" type="text" placeholder="http://google.com" v-model="newPost.src" />
                 </div>
-                <p class="help is-danger">
-                    This field is required
-                </p>
                 </div>
             </div>
             </div>
@@ -65,7 +62,7 @@
             <div class="field-body">
                 <div class="field">
                 <div class="control">
-                    <button class="button is-primary">
+                    <button class="button is-info">
                     Post
                     </button>
                 </div>

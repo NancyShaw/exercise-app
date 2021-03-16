@@ -15,9 +15,9 @@
 
 <script>
 export default {
-    props: {
-        newDaily: Object
-    }
+    data: ()=> ({
+        newDaily: Number
+    })
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       
-      <div class="card">
+     <!-- <div class="card">
         <header class="card-header">
           <p class="card-header-title has-background-link has-text-link-light">
             Profile info
@@ -16,7 +16,9 @@
             <div>Photo</div>
           </div>
         </div>
-      </div>
+      </div>-->
+
+      <ProfileCard :profileInfo="profileInfo" />
 
       <form class="box">
             <div class="field">
@@ -41,7 +43,19 @@
 </template>
 
 <script>
+import ProfileCard from "../components/ProfileCard.vue";
+import { GetProfileInfo } from "../models/ProfileInfo";
+
 export default {
+  data: ()=> ({
+    profileInfo: []
+  }),
+  mounted() {
+    this.profileInfo = GetProfileInfo();
+  },
+  components: {
+    ProfileCard
+  }
 
 }
 </script>

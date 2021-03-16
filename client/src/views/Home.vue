@@ -20,24 +20,27 @@
 import CurrentGoals from "../components/CurrentGoals"
 import { GetOtherGoals, GetDailyGoal } from "../models/Goals";
 import ActivitySummary from "../components/ActivitySummary.vue";
-import { GetActivities, GetTotalTime } from "../models/Activities";
+import { GetActivities } from "../models/Activities";
 
 export default {
     data: ()=> ({ 
         otherGoals: [],
-        daily: [],
+        daily: 0,
         activities: [],
-        total: []
     }),
     mounted() {
         this.otherGoals = GetOtherGoals();
         this.daily = GetDailyGoal();
         this.activities = GetActivities();
-        this.total = GetTotalTime();
     },
     components: {
         CurrentGoals,
         ActivitySummary
+    },
+    computed: {
+        total () {
+            return this.activities.reduce((total, a) => total + +a.timeMins, 0);
+        }
     }
 
 }
