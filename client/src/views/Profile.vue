@@ -1,24 +1,7 @@
 <template>
   <div class="container">
-      
-     <!-- <div class="card">
-        <header class="card-header">
-          <p class="card-header-title has-background-link has-text-link-light">
-            Profile info
-          </p>
-        </header>
-        <div class="card-content has-background-link-light has-text-link-dark">
-          <div class="content">
-            
-            <div>Name</div>
-            <div>Username</div>
-            <div>Email</div>
-            <div>Photo</div>
-          </div>
-        </div>
-      </div>-->
 
-      <ProfileCard :profileInfo="profileInfo" />
+      <ProfileCard :info="profileInfo" />
 
       <form class="box">
             <div class="field">
@@ -48,10 +31,11 @@ import { GetProfileInfo } from "../models/ProfileInfo";
 
 export default {
   data: ()=> ({
-    profileInfo: []
+    profileInfo: {}
   }),
   mounted() {
     this.profileInfo = GetProfileInfo();
+    console.log(this.profileInfo);
   },
   components: {
     ProfileCard

@@ -15,7 +15,7 @@
 <script>
 export default {
     data: ()=> ({
-        searchName: String
+        searchName: ""
     })
 }
 </script>
