@@ -5,7 +5,7 @@
               <ProfileCard :info="profileInfo" />
           </div>
           <div class="column is-one-half">
-              <UpdateProfileInfo />
+              <UpdateProfileInfo :newInfo="newInfo" @update="updateProfileInfo" />
           </div>
       </div>
 
@@ -15,12 +15,12 @@
 <script>
 import ProfileCard from "../components/ProfileCard.vue";
 import UpdateProfileInfo from "../components/UpdateProfileInfo.vue";
-import { GetProfileInfo } from "../models/ProfileInfo";
+import { GetProfileInfo, UpdateInfo } from "../models/ProfileInfo";
 
 export default {
   data: ()=> ({
     profileInfo: {},
-    //newInfo: {}
+    newInfo: {}
   }),
   mounted() {
     this.profileInfo = GetProfileInfo();
@@ -30,11 +30,20 @@ export default {
     ProfileCard,
     UpdateProfileInfo
   },
- /* methods: {
+  methods: {
     updateProfileInfo() {
       UpdateInfo(this.newInfo);
+      console.log(this.newInfo);
     }
-  }*/
+  },
+  watch: {
+    profileInfo:function(val, oldVal) {
+      console.log("profile data changed from " + oldVal.pic + " to " + val.pic);
+      this.profileInfo = GetProfileInfo();
+    },
+    deep: true,
+    immediate: true 
+  }
 
 }
 </script>

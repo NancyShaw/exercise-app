@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <form @submit.prevent="$emit('updateProfileInfo')" class="box">
+        <form @submit.prevent="$emit('update')" class="box">
             <p>Edit Profile info*</p>
             <div class="field">
                 <label class="label">Change your profile Picture</label>
@@ -9,8 +9,10 @@
                 </div>
             </div>
 
-            <button class="button is-info" v-on:click="updateProfileInfo">Submit</button>
-
+            <div class="control">
+                <button class="button is-info">Submit</button>
+            </div>
+            
             <p> <br /> *At this time only the profile picture may be modified</p>
         </form>
 
@@ -18,16 +20,9 @@
 </template>
 
 <script>
-import { UpdateInfo } from "../models/ProfileInfo";
 export default {
-    data: ()=> ({
-        newInfo: {}
-    }),
-    methods: {
-        updateProfileInfo() { 
-            UpdateInfo(this.newInfo);
-            console.log(this.newInfo);
-        }
+    props:{
+        newInfo: Object
     }
 }
 </script>
