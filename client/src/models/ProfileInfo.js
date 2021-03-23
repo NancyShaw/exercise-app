@@ -1,5 +1,6 @@
 /** model for holding user data */
 
+// holds profile info for a specific user
 const profileInfo =
     { 
         nomedeplume: "Sally",
@@ -9,5 +10,12 @@ const profileInfo =
     };
 
 export function GetProfileInfo() {
+    return profileInfo;
+}
+
+export function UpdateInfo(info) {
+    profileInfo.pic = info.pic;
+    console.log(info);
+    console.log(profileInfo.pic);
     return profileInfo;
 }
