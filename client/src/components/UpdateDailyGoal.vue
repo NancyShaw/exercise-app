@@ -4,7 +4,7 @@
             <p>Update Total Daily Exercise Goal</p>
             <label class="label">Total Daily Exercise Goal</label>
             <div>
-                <input class="input" type="number" placeholder="45" v-model="newDaily" />
+                <input class="input" type="number" placeholder="45" v-model="newDaily.goal" />
             </div>
             <p class="help">Daily exercise goal in minutes</p>
         </div>
@@ -15,9 +15,9 @@
 
 <script>
 export default {
-    data: ()=> ({
-        newDaily: Number
-    })
+    props: {
+        newDaily: Object
+    }
 }
 </script>
 

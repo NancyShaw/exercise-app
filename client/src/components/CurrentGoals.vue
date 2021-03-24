@@ -10,7 +10,7 @@
             <span class="icon is-left">
                 <i class="fas fa-book" aria-hidden="true"></i>
             </span>
-            {{daily}}
+            {{daily.goal}}
         </div>
         <p class="panel-block" v-for="(other, i) in otherGoals" :key="i">
             <span class="panel-icon">
@@ -27,7 +27,7 @@
 export default {
   props: {
     otherGoals: Array,
-    daily: Number
+    daily: Object
   }
   
 

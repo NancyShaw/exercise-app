@@ -25,7 +25,7 @@ import { GetActivities } from "../models/Activities";
 export default {
     data: ()=> ({ 
         otherGoals: [],
-        daily: 0,
+        daily: {},
         activities: [],
     }),
     mounted() {

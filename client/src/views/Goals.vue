@@ -3,7 +3,7 @@
       
       <CurrentGoals :otherGoals="otherGoals" :daily="daily"/>
       
-      <UpdateDailyGoal @update="updateDailyGoal" />
+      <UpdateDailyGoal :newDaily="newDaily" @update="updateDailyGoal" />
         
         <AddGoal :newGoal="newGoal" @add="addGoal" />
 
@@ -21,7 +21,8 @@ export default Vue.extend( {
     data: ()=> ({
         newGoal: {},
         otherGoals: [],
-        daily: 0,
+        daily: {},
+        newDaily: {}
     }),
     mounted() {
         this.otherGoals = GetOtherGoals();
@@ -37,8 +38,8 @@ export default Vue.extend( {
             this.otherGoals.unshift(this.newGoal);
             this.newGoal = {};
         },
-        updateDailyGoal(newDaily) {
-            UpdateDaily(newDaily);
+        updateDailyGoal() {
+            UpdateDaily(this.newDaily);
         }  
     }
     
