@@ -17,8 +17,8 @@ const users = [
     }
 ]
 
-export function GetUser(handle) {
-    return users.filter( x=> x.handle == handle);
+export function GetUser(email) {
+    return users.filter( x=> x.email == email);
 }
 
 export function AddUser(record) {
