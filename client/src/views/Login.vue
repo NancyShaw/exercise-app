@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-      <form @submit.prevent="login" id="login">
+      <form @submit.prevent="login">
         <div class="field">
             <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Username">
+                <input class="input" type="email" placeholder="Email">
                 <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
                 </span>
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style>
-#login {
+.container {
     margin-top: 10px;
 }
 </style>

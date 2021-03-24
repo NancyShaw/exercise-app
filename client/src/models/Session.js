@@ -6,7 +6,7 @@ const Session = {
 export default Session;
 
 export function Login() {
-    Session.user = { name: "John Doe"}
+    Session.user = { name: "John Doe", email: "johndoe@mystery.com"}
 }
 
 export function Logout() {
