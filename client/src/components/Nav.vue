@@ -37,9 +37,7 @@
                       </a>
               
                       <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                          About
-                        </a>
+                      
                         <router-link to="/Documentation" class="navbar-item">
                           Documentation
                         </router-link>

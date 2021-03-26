@@ -1,51 +1,55 @@
 <template>
   <div class="container">
-      
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title has-background-link has-text-link-light">
-            Profile info
-          </p>
-        </header>
-        <div class="card-content has-background-link-light has-text-link-dark">
-          <div class="content">
-            
-            <div>Name</div>
-            <div>Username</div>
-            <div>Email</div>
-            <div>Photo</div>
+      <div class="columns">
+          <div class="column is-one-half">
+              <ProfileCard :info="profileInfo" />
           </div>
-        </div>
+          <div class="column is-one-half">
+              <UpdateProfileInfo :newInfo="newInfo" @update="updateProfileInfo" />
+          </div>
       </div>
-
-      <form class="box">
-            <div class="field">
-                <p>Edit Profile info</p>
-                <label class="label">Change email address for this account</label>
-                <div>
-                    <input class="input" type="email" placeholder="someone@somewhere.com" />
-                </div>
-                <p class="help">Must be a valid email address</p>
-            </div>
-            <div class="field">
-                <label class="label">Change your profile Picture</label>
-                <div>
-                    <input class="input" type="text" placeholder="Picture URL" />
-                </div>
-            </div>
-
-            <button class="button is-info">Submit</button>
-        </form>
 
   </div>
 </template>
 
 <script>
+import ProfileCard from "../components/ProfileCard.vue";
+import UpdateProfileInfo from "../components/UpdateProfileInfo.vue";
+import { GetProfileInfo, UpdateInfo } from "../models/ProfileInfo";
+
 export default {
+  data: ()=> ({
+    profileInfo: {},
+    newInfo: {}
+  }),
+  mounted() {
+    this.profileInfo = GetProfileInfo();
+    console.log(this.profileInfo);
+  },
+  components: {
+    ProfileCard,
+    UpdateProfileInfo
+  },
+  methods: {
+    updateProfileInfo() {
+      UpdateInfo(this.newInfo);
+      console.log(this.newInfo);
+    }
+  },
+  watch: {
+    profileInfo:function(val, oldVal) {
+      console.log("profile data changed from " + oldVal.pic + " to " + val.pic);
+      this.profileInfo = GetProfileInfo();
+    },
+    deep: true,
+    immediate: true 
+  }
 
 }
 </script>
 
 <style>
-
+.container {
+    margin-top: 10px;
+}
 </style>

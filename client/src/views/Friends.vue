@@ -1,44 +1,49 @@
 <template>
-  <div class="container">
-      <p>View for finding friends</p>
-      <form class="box">
-            <div class="field">
-                <p>Find Friends!</p>
-                <label class="label">Search by name</label>
-                <div>
-                    <input class="input" type="text" placeholder="Red Fraggle" />
-                </div>
+    <div class="container">
+        <div class="columns">
+            
+            <div class="column is-one-half">
+                <FindFriends @search="findFriends" />
+                <!-- display search results here -->
+                
             </div>
-            <div class="field">
-                <label class="label">Search by email</label>
-                <div>
-                    <input class="input" type="email" placeholder="redfraggle@cavern.com" />
-                </div>
+            
+            <div class="column is-one-half">
+                <FriendsList :friends="friends" />
             </div>
-
-            <button class="button is-info">Submit</button>
-        </form>
-        <div class="card">
-        <header class="card-header">
-          <p class="card-header-title has-background-link has-text-link-light">
-            My Friends
-          </p>
-        </header>
-        <div class="card-content has-background-link-light has-text-link-dark">
-          <div class="content">
-            <div>Placeholder for list of friends</div>
-          </div>
-        </div>
-      </div>
-  </div>
+        
+        </div>  
+    </div>
 </template>
 
 <script>
+import FriendsList from '../components/FriendsList.vue';
+import { GetFriends, FindNewFriends } from "../models/Friends";
+import FindFriends from "../components/FindFriends.vue";
 export default {
+  data: ()=> ({
+      newFriends: [],
+      friends: [],
+  }),
+  mounted() {
+      this.friends = GetFriends();
+  },
+  components: {
+    FriendsList,
+    FindFriends
+  },
+  methods: {
+      findFriends() {
+          //this needs to pass the search name, and use the returned freinds
+          FindNewFriends();
+      }
+  }
 
 }
 </script>
 
 <style>
-
+.container {
+    margin-top: 10px;
+}
 </style>
