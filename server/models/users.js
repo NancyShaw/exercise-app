@@ -19,7 +19,13 @@ const list = [
         handle: "ItsTheNose",
         pic: "https://bulma.io/images/placeholders/96x96.png",
         password: "notsecure",
-    }
+    },
+    {
+        "name": "Cheery",
+        "email": "cheery@uberwald.com",
+        "handle": "Forensics",
+        "password": "$2b$08$jHcrWlz7fKbbWgsfT44b/.OQS8eLdsVXNO8aU1qO.L49uqBnveBsK"
+    },
 ];
 
 module.exports.GetAll = ()=> list;
@@ -27,7 +33,7 @@ module.exports.GetAll = ()=> list;
 module.exports.Register = async (user)=> {
 
     const hash = await bcrypt.hash(user.password, +SALT_ROUNDS);
-    
+     
     user.password = hash;
 
     if (!user.name) {
@@ -48,10 +54,8 @@ module.exports.Login = async (email, password) => {
     }
 
     const data = { ...user, password: undefined };
+    const token = jwt.sign(data, JWT_SECRET, { expiresIn: '360s'});
 
-    const token = jwt.sign(data, JWT_SECRET);
-
-    return {user, token};
-    
+    return {user, token};  
 }
 
