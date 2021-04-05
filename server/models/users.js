@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const SALT_ROUNDS = process.env.SALT_ROUNDS;
 const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_EXPIRATION_SECS = process.env.JWT_EXPIRATION_SECS;
 
 const list = [
     {
@@ -19,12 +20,6 @@ const list = [
         handle: "ItsTheNose",
         pic: "https://bulma.io/images/placeholders/96x96.png",
         password: "notsecure",
-    },
-    {
-        "name": "Cheery",
-        "email": "cheery@uberwald.com",
-        "handle": "Forensics",
-        "password": "$2b$08$jHcrWlz7fKbbWgsfT44b/.OQS8eLdsVXNO8aU1qO.L49uqBnveBsK"
     },
 ];
 
@@ -54,7 +49,7 @@ module.exports.Login = async (email, password) => {
     }
 
     const data = { ...user, password: undefined };
-    const token = jwt.sign(data, JWT_SECRET, { expiresIn: '360s'});
+    const token = jwt.sign(data, JWT_SECRET, { expiresIn: JWT_EXPIRATION_SECS});
 
     return {user, token};  
 }

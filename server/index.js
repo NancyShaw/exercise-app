@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT;
 
 const usersCtrl = require('./controllers/users');
+const goalsCtrl = require('./controllers/goals');
 
 app
     .use(express.json())
@@ -18,6 +19,7 @@ app
 
     //mounting controllers
     .use('/users', usersCtrl)
+    .use('/goals', goalsCtrl)
 
     .get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../docs/index.html') );
