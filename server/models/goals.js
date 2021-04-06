@@ -34,17 +34,17 @@ const goals = [
 module.exports.GetAll = ()=> goals;
 
 module.exports.GetByUserId = (user_id)=> {
-    return goals.filter(g=> g.user_id == user_id)
+    return goals.find(g=> g.user_id == user_id)
 }
 
 module.exports.UpdateDaily = (user_id, newDaily)=> {
     this.GetByUserId(user_id).daily = newDaily;
-    
-    return this.GetByUserId(user_id);
+    return newDaily;
 }
 
 module.exports.Add = (user_id, newGoal)=> {
-    oldList = goals.filter(g=> g.user_id == user_id)
-    
-    return goals.filter(g=> g.user_id == user_id).otherGoals;
+    goalItem = goals.find(g=> g.user_id == user_id)
+    newGoal.id = goalItem.otherGoals.length;
+    goalItem.otherGoals.push(newGoal);
+    return newGoal;
 }
