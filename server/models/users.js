@@ -10,20 +10,34 @@ const list = [
     {
         name: "Sally",
         email: "sally@uberwald.com",
-        handle: "ImBatty",
+        handle: "@ImBatty",
         pic: "https://bulma.io/images/placeholders/96x96.png",
         password: "notsecure",
+        isAdmin: false,
+        following: [ {handle: "@ItsTheNose", isApproved: true} ],
     },
     {
         name: "Angua",
         email: "angua@uberwald.com",
-        handle: "ItsTheNose",
+        handle: "@ItsTheNose",
         pic: "https://bulma.io/images/placeholders/96x96.png",
         password: "notsecure",
+        isAdmin: true,
+        following: [ {handle: "@Forensics", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
+    },
+    {
+        name: "Cheery",
+        email: "cheery@uberwald.com",
+        handle: "@Forensics",
+        password: "notsecure",
+        isAdmin: false,
+        following: [ {handle: "@ItsTheNose", isApproved: true} ],
     },
 ];
 
 module.exports.GetAll = ()=> list;
+
+module.exports.GetByHandle = (handle)=> ({ ...list.find( (x, i)=> x.handle == handle ), password: undefined });
 
 module.exports.Register = async (user)=> {
 

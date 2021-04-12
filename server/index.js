@@ -5,7 +5,9 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
+const { AuthenticateToken } = require('./controllers/security');
 const usersCtrl = require('./controllers/users');
+const sharesCtrl = require('./controllers/shares');
 const goalsCtrl = require('./controllers/goals');
 const activitiesCtrl = require('./controllers/activities');
 
@@ -20,6 +22,7 @@ app
 
     //mounting controllers
     .use('/users', usersCtrl)
+    .use('/shares', AuthenticateToken, sharesCtrl)
     .use('/goals', goalsCtrl)
     .use('/activities', activitiesCtrl)
 
