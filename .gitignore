@@ -514,3 +514,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,vscode,vuejs,node,sass
+
+# REST Client extension test file
+server/tools/scratch.http
