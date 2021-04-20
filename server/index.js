@@ -25,8 +25,8 @@ app
     //mounting controllers
     .use('/users', usersCtrl)
     .use('/shares', AuthenticateToken, sharesCtrl)
-    .use('/goals', goalsCtrl)
-    .use('/activities', activitiesCtrl)
+    .use('/goals', AuthenticateToken, goalsCtrl)
+    .use('/activities', AuthenticateToken, activitiesCtrl)
 
     .get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../docs/index.html') );
