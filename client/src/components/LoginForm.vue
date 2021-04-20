@@ -2,7 +2,7 @@
     <form @submit.prevent="$emit('login')" class="box">
         <div class="field">
             <div class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="Email" v-model="loginInfo.email" />
+                <input class="input" type="email" placeholder="Email" v-model="email" />
                 <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
                 </span>
@@ -13,7 +13,7 @@
             </div>
             <div class="field">
             <div class="control has-icons-left">
-                <input class="input" type="password" placeholder="Password" v-model="loginInfo.password" />
+                <input class="input" type="password" placeholder="Password" v-model="password" />
                 <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
                 </span>
@@ -39,7 +39,8 @@
 <script>
 export default {
     props: {
-        loginInfo: Object
+        email: Object,
+        password: Object
     }
 }
 </script>

@@ -13,7 +13,7 @@ const goals = [
                 goal: "Stretch"
             }
         ],
-        user_id: 3
+        user_id: 2
     },
     {
         daily: 40,
@@ -27,7 +27,7 @@ const goals = [
                 goal: "Dance more"
             }
         ],
-        user_id: 7
+        user_id: 1
     },
 ];
 

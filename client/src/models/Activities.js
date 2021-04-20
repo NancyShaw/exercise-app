@@ -1,5 +1,8 @@
 /** model to hold exercise/activity information */
 
+import { api } from "../connections/myFetch";
+import Session from "./Session";
+
 const activities = [
     {
         activity: "running",
@@ -16,7 +19,8 @@ const activities = [
 ];
 
 export function GetActivities() {
-    return activities;
+    console.log(Session.user);
+    return api(`activities/${Session.user.userId}`);
 }
 
 export function GetTotalTime() {
@@ -27,5 +31,7 @@ export function GetTotalTime() {
 }
 
 export function AddActivities(record) {
+    //api('activities/${Session.user.id}', record);
+    //this needs to also get a response, so i can update the UI
     activities.unshift(record);
 }

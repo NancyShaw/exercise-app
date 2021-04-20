@@ -15,6 +15,7 @@ const list = [
         password: "notsecure",
         isAdmin: false,
         following: [ {handle: "@ItsTheNose", isApproved: true} ],
+        userId: 1,
     },
     {
         name: "Angua",
@@ -24,6 +25,7 @@ const list = [
         password: "notsecure",
         isAdmin: true,
         following: [ {handle: "@Forensics", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
+        userId: 2,
     },
     {
         name: "Cheery",
@@ -32,6 +34,7 @@ const list = [
         password: "notsecure",
         isAdmin: false,
         following: [ {handle: "@ItsTheNose", isApproved: true} ],
+        userId: 3,
     },
 ];
 
@@ -62,9 +65,10 @@ module.exports.Login = async (email, password) => {
         throw { code: 401, msg: "Wrong Username or Password" };
     }
 
-    const data = { ...user, password: undefined };
-    const token = jwt.sign(data, JWT_SECRET, { expiresIn: JWT_EXPIRATION_SECS});
+    const userData = { ...user, password: undefined };
+    const token = jwt.sign(userData, JWT_SECRET, { expiresIn: JWT_EXPIRATION_SECS});
 
-    return {user, token};  
+    console.log(userData);
+    return {userData, token};  
 }
 

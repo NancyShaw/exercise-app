@@ -7,11 +7,28 @@ const activities_list = [
         user_id: 1,
         activities: [
             {
-                type: "running",
+                activity: "running",
                 timeMins: 30
             },
             {
-                type: "climbing",
+                activity: "climbing",
+                timeMins: 120
+            },
+            {
+                activity: "dance",
+                timeMins: 45
+            }
+        ]
+    },
+    {
+        user_id: 2,
+        activities: [
+            {
+                activity: "running",
+                timeMins: 30
+            },
+            {
+                activity: "climbing",
                 timeMins: 120
             },
             {
@@ -21,19 +38,19 @@ const activities_list = [
         ]
     },
     {
-        user_id: 2,
+        user_id: 3,
         activities: [
             {
-                type: "running",
-                timeMins: 30
+                activity: "Axe Throwing",
+                timeMins: 35
             },
             {
-                type: "climbing",
-                timeMins: 120
+                activity: "Sparing",
+                timeMins: 100
             },
             {
-                type: "dance",
-                timeMins: 45
+                activity: "Running",
+                timeMins: 20
             }
         ]
     }
@@ -41,7 +58,9 @@ const activities_list = [
 
 module.exports.GetByUserId = (user_id)=> {
     //TODO: maybe calculate total time here, and return with activities list
-    return activities_list.find(a=> a.user_id == user_id)
+    const userData = activities_list.find(a=> a.user_id == user_id);
+    //null check
+    return userData.activities;
 }
 
 module.exports.Add = (user_id, record)=> {

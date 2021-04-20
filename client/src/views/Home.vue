@@ -28,10 +28,11 @@ export default {
         daily: {},
         activities: [],
     }),
-    mounted() {
+    async mounted() {
         this.otherGoals = GetOtherGoals();
         this.daily = GetDailyGoal();
-        this.activities = GetActivities();
+        this.activities = await GetActivities();
+        console.log(this.activities);
     },
     components: {
         CurrentGoals,
