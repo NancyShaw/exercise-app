@@ -4,7 +4,7 @@
 //TODO: add a date field
 const activities_list = [
     {
-        user_id: 1,
+        userId: 1,
         activities: [
             {
                 activity: "running",
@@ -21,7 +21,7 @@ const activities_list = [
         ]
     },
     {
-        user_id: 2,
+        userId: 2,
         activities: [
             {
                 activity: "running",
@@ -38,7 +38,7 @@ const activities_list = [
         ]
     },
     {
-        user_id: 3,
+        userId: 3,
         activities: [
             {
                 activity: "Axe Throwing",
@@ -56,16 +56,16 @@ const activities_list = [
     }
 ];
 
-module.exports.GetByUserId = (user_id)=> {
+module.exports.GetByUserId = (userId)=> {
     //TODO: maybe calculate total time here, and return with activities list
-    const userData = activities_list.find(a=> a.user_id == user_id);
-    //null check
+    const userData = activities_list.find(a=> a.userId == userId);
+    //TODO: add null check
     return userData.activities;
 }
 
-module.exports.Add = (user_id, record)=> {
-    activityItem = activities_list.find(a=> a.user_id == user_id);
+module.exports.Add = (userId, record)=> {
+    activityItem = activities_list.find(a=> a.userId == userId);
     activityItem.activities.push(record);
-    //consider whether I want to return the entire list, or just the new record
-    return activityItem;
+    console.log(activityItem);
+    return { ...record };
 }
