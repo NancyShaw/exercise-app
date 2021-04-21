@@ -13,7 +13,7 @@ const goals = [
                 goal: "Stretch"
             }
         ],
-        user_id: 2
+        userId: 2
     },
     {
         daily: 40,
@@ -27,24 +27,42 @@ const goals = [
                 goal: "Dance more"
             }
         ],
-        user_id: 1
+        userId: 1
+    },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 3
     },
 ];
 
 module.exports.GetAll = ()=> goals;
 
-module.exports.GetByUserId = (user_id)=> {
-    return goals.find(g=> g.user_id == user_id)
+module.exports.GetByUserId = (userId)=> {
+    return goals.find(g=> g.userId == userId)
 }
 
-module.exports.UpdateDaily = (user_id, newDaily)=> {
-    this.GetByUserId(user_id).daily = newDaily;
+module.exports.UpdateDaily = (userId, newDaily)=> {
+    console.log("I reached UpdateDaily in my model!!!");
+    this.GetByUserId(userId).daily = newDaily;
+    console.log(newDaily);
     return newDaily;
 }
 
-module.exports.Add = (user_id, newGoal)=> {
-    goalItem = goals.find(g=> g.user_id == user_id)
+module.exports.Add = (userId, newGoal)=> {
+    goalItem = goals.find(g=> g.userId == userId)
     newGoal.id = goalItem.otherGoals.length;
     goalItem.otherGoals.push(newGoal);
     return newGoal;
 }
+
+//TODO: implement delete goal

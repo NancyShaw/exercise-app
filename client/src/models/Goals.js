@@ -1,6 +1,9 @@
 /* Holds data related to a user's goals */
 
-const otherGoals = [
+import { api } from "../connections/myFetch";
+import Session from "./Session";
+
+/*const otherGoals = [
     {
         goal: "Goal one"
     },
@@ -11,19 +14,28 @@ const otherGoals = [
 
 const daily = {
     goal: 45
-};
+};*/
 
 
-export function GetDailyGoal() {
+/*export function GetDailyGoal() {
     return daily;
 }
 
 export function GetOtherGoals() {
     return otherGoals;
+}*/
+
+export function GetGoals() {
+    return api(`goals/${Session.user.userId}`);
+}
+
+export function AddOtherGoal(goal) {
+    return api(`goals/${Session.user.userId}`, goal);
 }
 
 export function UpdateDaily(newDaily) {
-    daily.goal = newDaily.goal;
+    return api(`goals/${Session.user.userId}`, newDaily, "PATCH");
+    //daily.goal = newDaily.goal;
 }
     
 

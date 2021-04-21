@@ -7,7 +7,7 @@ import Session from "../models/Session";
 //const API_ROOT = process.env.VUE_APP_API_ROOT;
 const API_ROOT = "http://localhost:3000/"
 
- export function api(url, data) {
+ export function api(url, data, method) {
     
     let promise;
 
@@ -15,7 +15,7 @@ const API_ROOT = "http://localhost:3000/"
 
     if (data) {
         promise = fetch(API_ROOT + url, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            method: method ?? 'POST', // *GET, POST, PUT, DELETE, etc.
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             headers: {
                 ...headers,

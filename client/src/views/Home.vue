@@ -18,7 +18,7 @@
 
 <script>
 import CurrentGoals from "../components/CurrentGoals"
-import { GetOtherGoals, GetDailyGoal } from "../models/Goals";
+import { GetGoals } from "../models/Goals";
 import ActivitySummary from "../components/ActivitySummary.vue";
 import { GetActivities } from "../models/Activities";
 
@@ -29,8 +29,11 @@ export default {
         activities: [],
     }),
     async mounted() {
-        this.otherGoals = GetOtherGoals();
-        this.daily = GetDailyGoal();
+        const goals = await GetGoals();
+        console.log(goals);
+        this.daily = goals.daily;
+        this.otherGoals = goals.otherGoals;
+        
         this.activities = await GetActivities();
         console.log(this.activities);
     },
