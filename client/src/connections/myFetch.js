@@ -3,6 +3,7 @@
  */
 
 import Session from "../models/Session";
+import { ToastError } from "../models/MyErrors";
  
 //const API_ROOT = process.env.VUE_APP_API_ROOT;
 const API_ROOT = "http://localhost:3000/"
@@ -34,7 +35,7 @@ const API_ROOT = "http://localhost:3000/"
         .catch(err=>{
             console.log(err);
             //TODO: display error, but in a more secure manner than this!
-            //toastError(err.msg || err);
+            ToastError(err.msg || err);
         });
     
 }
