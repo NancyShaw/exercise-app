@@ -32,6 +32,7 @@ const list = [
         email: "cheery@uberwald.com",
         handle: "@Forensics",
         password: "notsecure",
+        pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
         following: [ {handle: "@ItsTheNose", isApproved: true} ],
         userId: 3,
@@ -39,6 +40,8 @@ const list = [
 ];
 
 module.exports.GetAll = ()=> list;
+
+module.exports.GetById = (userId)=> ({ ...list.find( (x, i)=> x.userId == userId ), password: undefined });
 
 module.exports.GetByHandle = (handle)=> ({ ...list.find( (x, i)=> x.handle == handle ), password: undefined });
 
@@ -51,6 +54,11 @@ module.exports.Register = async (user)=> {
     if (!user.name) {
         throw { code: 422, msg: "Name is required!" }
     }
+
+    // add ID
+    user.userId = list[list.length-1].userId + 1;
+    user.isAdmin = false; // isAdmin to false by default
+
     list.push(user);
     //this returns a copy of user without the password
     return { ...user, password: undefined };
@@ -72,3 +80,13 @@ module.exports.Login = async (email, password) => {
     return {userData, token};  
 }
 
+//for now only allowing users to update their pic, 
+//but writing this in a way that allows for easy future improvements
+module.exports.Update = (userId, user)=> {
+    oldUser = list.find(u=> u.userId == userId);
+    if (user.pic) {
+        oldUser.pic = user.pic;
+        console.log(`Updating pic for user ${userId}`);
+    }
+    return { ...oldUser, password: undefined };  
+}

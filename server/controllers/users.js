@@ -8,6 +8,9 @@ const app = express.Router();
         .get('/', AuthenticateToken, (req, res) => {
             res.send(model.GetAll());
         })
+        .get('/:user_id', AuthenticateToken, (req, res) => {
+            res.send( model.GetById( req.params.user_id ) );
+        })
         .post('/register', (req, res, next)=> {
             console.log(req);
             model.Register(req.body)
@@ -18,6 +21,9 @@ const app = express.Router();
             model.Login(req.body.email, req.body.password)
             .then(user=> res.send( user ))
             .catch(next);
+        })
+        .patch('/:user_id', AuthenticateToken, (req, res)=> {
+            res.send( model.Update(req.params.user_id, req.body) )
         })
 
 module.exports = app;        

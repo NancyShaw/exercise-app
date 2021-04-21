@@ -15,15 +15,15 @@
 <script>
 import ProfileCard from "../components/ProfileCard.vue";
 import UpdateProfileInfo from "../components/UpdateProfileInfo.vue";
-import { GetProfileInfo, UpdateInfo } from "../models/ProfileInfo";
+import { GetUser, UpdateUser } from "../models/Users";
 
 export default {
   data: ()=> ({
     profileInfo: {},
     newInfo: {}
   }),
-  mounted() {
-    this.profileInfo = GetProfileInfo();
+  async mounted() {
+    this.profileInfo = await GetUser();
     console.log(this.profileInfo);
   },
   components: {
@@ -31,18 +31,12 @@ export default {
     UpdateProfileInfo
   },
   methods: {
-    updateProfileInfo() {
-      UpdateInfo(this.newInfo);
-      console.log(this.newInfo);
+    async updateProfileInfo() {
+        console.log(`inside updateProfileInfo method, newInfo equals ${this.newInfo}`);
+        console.log(this.newInfo);
+        const updatedUser = await UpdateUser(this.newInfo);
+        this.profileInfo = updatedUser;
     }
-  },
-  watch: {
-    profileInfo:function(val, oldVal) {
-      console.log("profile data changed from " + oldVal.pic + " to " + val.pic);
-      this.profileInfo = GetProfileInfo();
-    },
-    deep: true,
-    immediate: true 
   }
 
 }
