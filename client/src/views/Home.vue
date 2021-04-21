@@ -31,7 +31,7 @@ export default {
     async mounted() {
         const goals = await GetGoals();
         console.log(goals);
-        this.daily = goals.daily;
+        this.daily = { goal: goals.daily };
         this.otherGoals = goals.otherGoals;
         
         this.activities = await GetActivities();

@@ -53,7 +53,7 @@ module.exports.GetByUserId = (userId)=> {
 
 module.exports.UpdateDaily = (userId, newDaily)=> {
     console.log("I reached UpdateDaily in my model!!!");
-    this.GetByUserId(userId).daily = newDaily;
+    this.GetByUserId(userId).daily = newDaily.goal;
     console.log(newDaily);
     return newDaily;
 }

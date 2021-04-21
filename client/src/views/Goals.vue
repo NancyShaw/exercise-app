@@ -27,8 +27,9 @@ export default Vue.extend( {
     async mounted() {
         const goals = await GetGoals();
         console.log(goals);
-        console.log(goals.daily);
-        this.daily = goals.daily;
+        //const dailyObj = ({}).valueof.call(goals.daily);
+        //console.log(dailyObj);
+        this.daily = { goal: goals.daily };
         this.otherGoals = goals.otherGoals;
     },
     components: {
