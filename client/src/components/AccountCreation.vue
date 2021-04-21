@@ -3,7 +3,7 @@
             <div class="field">
                 <label class="label">Name</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Name" v-model="newUser.nomdeplume" />
+                    <input class="input" type="text" placeholder="Name" v-model="newUser.name" />
                 </div>
             </div>
 

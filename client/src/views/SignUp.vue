@@ -15,8 +15,8 @@ export default {
         AccountCreation
     },
     methods: {
-        signup() {
-            AddUser(this.newUser);
+        async signup() {
+            await AddUser(this.newUser);
             this.$router.push('/');
         }
     }
