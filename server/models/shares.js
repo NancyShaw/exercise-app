@@ -64,7 +64,10 @@ module.exports.GetWall = (handle)=> {
 }
 
 module.exports.GetFeed = (handle)=> {
-    var filteredShares = listWithOwner().filter(share=> users.GetByHandle(handle).following.some(f=> f.handle == share.handle && f.isApproved) );
+    var filteredShares = listWithOwner().filter(share=>
+            share.handle == handle ||  
+            users.GetByHandle(handle).following.some(f=> f.handle == share.handle && f.isApproved) 
+        );
     console.log(filteredShares);
     let mappedShares = filterOutUserInfo(filteredShares);
     console.log(mappedShares);
@@ -80,7 +83,7 @@ module.exports.Add = (share)=> {
     share.id = shares_list[shares_list.length-1].id + 1;
     share.time = Date();
     share.isPublic = true; //right now all posts are public by default
-    shares_list.push(share);
+    shares_list.unshift(share);
     console.log(share);
     return { ...share };
 }

@@ -16,6 +16,7 @@
 import ProfileCard from "../components/ProfileCard.vue";
 import UpdateProfileInfo from "../components/UpdateProfileInfo.vue";
 import { GetUser, UpdateUser } from "../models/Users";
+import Session from "../models/Session";
 
 export default {
   data: ()=> ({
@@ -32,10 +33,9 @@ export default {
   },
   methods: {
     async updateProfileInfo() {
-        console.log(`inside updateProfileInfo method, newInfo equals ${this.newInfo}`);
-        console.log(this.newInfo);
         const updatedUser = await UpdateUser(this.newInfo);
         this.profileInfo = updatedUser;
+        Session.user = updatedUser;
     }
   }
 
