@@ -56,6 +56,19 @@ const activities_list = [
     }
 ];
 
+module.exports.CreateInitialActivity = (userId)=> {
+    const newActivity = {
+        userId: userId,
+        activities: [
+            {
+                activity: "Registering for Exercise App!",
+                timeMins: 3
+            }
+        ]
+    };
+    activities_list.push(newActivity);
+}
+
 module.exports.GetByUserId = (userId)=> {
     //TODO: maybe calculate total time here, and return with activities list
     const userData = activities_list.find(a=> a.userId == userId);

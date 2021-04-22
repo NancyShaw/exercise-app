@@ -45,6 +45,20 @@ const goals = [
     },
 ];
 
+module.exports.CreateInitialGoal = (userId)=> {
+    const newGoal = { 
+        daily: 20,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Create some goals!"
+            }
+        ],
+        userId: userId
+    };
+    goals.push(newGoal);
+}
+
 module.exports.GetAll = ()=> goals;
 
 module.exports.GetByUserId = (userId)=> {

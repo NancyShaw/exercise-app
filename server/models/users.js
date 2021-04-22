@@ -2,6 +2,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const goals = require('./goals');
+const activities = require('./activities');
+
 const SALT_ROUNDS = process.env.SALT_ROUNDS;
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRATION_SECS = process.env.JWT_EXPIRATION_SECS;
@@ -60,6 +63,11 @@ module.exports.Register = async (user)=> {
     user.isAdmin = false; // isAdmin to false by default
 
     list.push(user);
+
+    // set up other initial site data to ensure happy user experience
+    goals.CreateInitialGoal(user.userId);
+    activities.CreateInitialActivity(user.userId);
+
     //this returns a copy of user without the password
     return { ...user, password: undefined };
     
