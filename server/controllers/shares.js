@@ -13,6 +13,10 @@ const app = express.Router();
                 res.send( model.GetWall( req.user.handle) );
             }            
         }  )
+        .get('/feed', (req, res) =>{
+            res.send( model.GetFeed( req.user.handle) );
+                       
+        }  )
         
         .post('/', (req, res)=> { 
             req.body.handle = req.user.handle;

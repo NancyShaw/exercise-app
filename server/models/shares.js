@@ -63,14 +63,25 @@ module.exports.GetWall = (handle)=> {
     
 }
 
+module.exports.GetFeed = (handle)=> {
+    var filteredShares = listWithOwner().filter(share=> users.GetByHandle(handle).following.some(f=> f.handle == share.handle && f.isApproved) );
+    console.log(filteredShares);
+    let mappedShares = filterOutUserInfo(filteredShares);
+    console.log(mappedShares);
+    return mappedShares;
+}
+
 module.exports.Add = (share)=> {
+    console.log(share);
     if (!share.handle) {
         throw { code: 422, msg: "share must have an Owner!" }
     }
 
     share.id = shares_list[shares_list.length-1].id + 1;
+    share.time = Date();
+    share.isPublic = true; //right now all posts are public by default
     shares_list.push(share);
-    
+    console.log(share);
     return { ...share };
 }
 

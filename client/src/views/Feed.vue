@@ -30,22 +30,22 @@ import Vue from "vue";
 import ContentCard from "../components/ContentCard.vue";
 import ContentCreation from "../components/ContentCreation.vue";
 import FriendsList from '../components/FriendsList.vue';
-import { GetMyFeed } from "../models/Posts";
+import { AddShare, GetMyFeed } from "../models/Posts";
 import { GetFriends } from "../models/Friends";
+import Session from "../models/Session";
 
 export default Vue.extend({
   data: ()=> ({
         friends: [],
         newPost: {
-            user: {
-            }
+            user: Session.user
         },
         posts: []
     }),
     async mounted() {
         const friends = await GetFriends();
         this.friends = friends;
-        this.posts = GetMyFeed();
+        this.posts = await GetMyFeed();
     },
     components: {
       ContentCard,
@@ -53,9 +53,11 @@ export default Vue.extend({
       FriendsList
     },
     methods: {
-        addPost() {
-            this.posts.unshift(this.newPost);
-            this.newPost = { user: {} };
+        async addPost() {
+            const share = await AddShare(this.newPost);
+            console.log(share);
+            this.posts.unshift(share);
+            this.newPost = { user: Session.user };
         },
         deletePost(i) {
           this.posts.splice(i, 1);

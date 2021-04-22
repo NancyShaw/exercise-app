@@ -1,8 +1,9 @@
-import Session from "./Session";
+
+import { api } from "../connections/myFetch";
 /*
 Access to all of the posts
 */
-const posts = [ 
+/*const posts = [ 
     { 
         src: "https://bulma.io/images/placeholders/1280x960.png",
         alt: "Placeholder image",
@@ -36,16 +37,22 @@ const posts = [
             pic: "https://bulma.io/images/placeholders/96x96.png"
         }
     },
-];
+];*/
 
-export function GetMyPosts() {
+
+/*export function GetMyPosts() {
     return GetPostsForUser(Session.user.handle);
 }
 
 export function GetPostsForUser(id) {
     return posts.filter( x=> x.user.handle == id );
-}
+}*/
 
 export function GetMyFeed() {
-    return posts;
+    return api(`shares/feed/`);
+}
+
+export function AddShare(share) {
+    console.log(share);
+    return api(`shares`, share);
 }
