@@ -6,10 +6,10 @@
         <p class="panel-block" v-for="(friend, i) in friends" :key="i">
             <span class="panel-icon">
             <img 
-            :src="friend.friend.src" 
-            :alt="friend.friend.alt">
+            :src="friend.user.pic" 
+            :alt="friend.user.name">
             </span>
-            {{friend.friend.handle}}
+            {{friend.user.handle}}
         </p>
     </article>
 </template>

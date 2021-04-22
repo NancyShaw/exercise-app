@@ -42,8 +42,9 @@ export default Vue.extend({
         },
         posts: []
     }),
-    mounted() {
-        this.friends = GetFriends();
+    async mounted() {
+        const friends = await GetFriends();
+        this.friends = friends;
         this.posts = GetMyFeed();
     },
     components: {

@@ -10,6 +10,7 @@ const { AuthenticateToken } = require('./controllers/security');
 const usersCtrl = require('./controllers/users');
 const sharesCtrl = require('./controllers/shares');
 const goalsCtrl = require('./controllers/goals');
+const friendsCtrl = require('./controllers/friends');
 const activitiesCtrl = require('./controllers/activities');
 
 app
@@ -26,6 +27,7 @@ app
     .use('/users', usersCtrl)
     .use('/shares', AuthenticateToken, sharesCtrl)
     .use('/goals', AuthenticateToken, goalsCtrl)
+    .use('/friends', AuthenticateToken, friendsCtrl)
     .use('/activities', AuthenticateToken, activitiesCtrl)
 
     .get('*', (req, res) => {

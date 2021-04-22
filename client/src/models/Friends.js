@@ -1,6 +1,9 @@
 /** Access to friends */
 
-const friends = [
+import { api } from "../connections/myFetch";
+import Session from "./Session";
+
+/*const friends = [
     {
         friend: {
             name: "Ally Alpha",
@@ -33,7 +36,7 @@ const friends = [
             alt: "Placeholder image"
         }
     },
-];
+];*/
 
 const newFreinds = [
     {
@@ -55,7 +58,7 @@ const newFreinds = [
 ];
 
 export function GetFriends() {
-    return friends;
+    return api(`friends/${Session.user.userId}`);
 }
 
 export function FindNewFriends() {

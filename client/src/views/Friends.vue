@@ -25,8 +25,10 @@ export default {
       newFriends: [],
       friends: [],
   }),
-  mounted() {
-      this.friends = GetFriends();
+  async mounted() {
+      const friends = await GetFriends();
+      this.friends = friends;
+      console.log(this.friends);
   },
   components: {
     FriendsList,
