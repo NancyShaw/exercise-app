@@ -33,8 +33,9 @@ const API_ROOT = process.env.VUE_APP_API_ROOT;
         })
         .catch(err=>{
             console.log(err);
-            //TODO: display error, but in a more secure manner than this!
-            ToastError(err.msg || err);
+            //TODO: display better error
+            const alternativeMessage = "Whoops! There was an error!";
+            ToastError(err.msg || alternativeMessage);
         });
     
 }

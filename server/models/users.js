@@ -8,6 +8,9 @@ const activities = require('./activities');
 const SALT_ROUNDS = process.env.SALT_ROUNDS;
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRATION_SECS = process.env.JWT_EXPIRATION_SECS;
+const CHEERY_PASSWD = process.env.CHEERY_PASSWD;
+const ANGUA_PASSWD = process.env.ANGUA_PASSWD;
+const SALLY_PASSWD = process.env.SALLY_PASSWD;
 
 const list = [
     {
@@ -15,7 +18,7 @@ const list = [
         email: "sally@uberwald.com",
         handle: "@ImBatty",
         pic: "https://bulma.io/images/placeholders/96x96.png",
-        password: "notsecure",
+        password: SALLY_PASSWD,
         isAdmin: false,
         following: [ {handle: "@ItsTheNose", isApproved: true} ],
         userId: 1,
@@ -25,7 +28,7 @@ const list = [
         email: "angua@uberwald.com",
         handle: "@ItsTheNose",
         pic: "https://bulma.io/images/placeholders/96x96.png",
-        password: "notsecure",
+        password: ANGUA_PASSWD,
         isAdmin: true,
         following: [ {handle: "@Forensics", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
         userId: 2,
@@ -34,7 +37,7 @@ const list = [
         name: "Cheery",
         email: "cheery@uberwald.com",
         handle: "@Forensics",
-        password: "notsecure",
+        password: CHEERY_PASSWD,
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
         following: [ {handle: "@ItsTheNose", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
