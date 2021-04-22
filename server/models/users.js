@@ -37,7 +37,7 @@ const list = [
         password: "notsecure",
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
-        following: [ {handle: "@ItsTheNose", isApproved: true} ],
+        following: [ {handle: "@ItsTheNose", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
         userId: 3,
     },
 ];
