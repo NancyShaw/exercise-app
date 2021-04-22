@@ -5,8 +5,7 @@
 import Session from "../models/Session";
 import { ToastError } from "../models/MyErrors";
  
-//const API_ROOT = process.env.VUE_APP_API_ROOT;
-const API_ROOT = "http://localhost:3000/"
+const API_ROOT = process.env.VUE_APP_API_ROOT;
 
  export function api(url, data, method) {
     
