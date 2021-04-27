@@ -7,8 +7,13 @@ const filterUserInfo = ((userItems)=> {
     return userItems.map(u=> ({user:{ name:u.name, handle:u.handle, pic:u.pic}}));
 })
 
-module.exports.GetFriends = (userId)=> {
+// returns a random integer on the range (1, max) inclusive of both 1 and max
+const getRandomInt = (max)=> {
+    return Math.floor(Math.random()*max) + 1;
+}
 
+module.exports.GetFriends = (userId)=> {
+    console.log(`retrieving friends for user ${userId}`);
     //first retrieve the friends for userId
     let following = users.GetById(userId)?.following;
     if (following == null) {
@@ -22,4 +27,51 @@ module.exports.GetFriends = (userId)=> {
     // filter list of users
     let filteredFollowing = filterUserInfo(fullFollowing);
     return filteredFollowing;
+}
+
+module.exports.FindFriends = (userId)=> {
+    console.log(`Finding new friends for user ${userId}`);
+    //get list of current friends
+    let following = users.GetById(userId)?.following;
+
+    //get list of all users
+    let allUsers = users.GetAll();
+
+    //if usersList.length-1 = friends.length, 
+    //user is already friends with everyone, return
+    if (following.length == allUsers.length-1) {
+        console.log(`User ${userId} is already friends with all other users`);
+        return [];
+    }
+
+    //select user from all users (local list, not the class!). if not friend, return as suggestion
+    let startId = getRandomInt(allUsers.length);
+    console.log(`start id is ${startId}`);
+    
+    for (alluser in allUsers) {
+        friendSug = allUsers.find(u => u.userId == startId);
+        
+        if (!following.some(f=> f.handle == friendSug.handle) && friendSug.userId != userId) {
+            //filter and return friend suggestion
+            
+            let filtered = {user: {name:friendSug.name, handle:friendSug.handle, pic:friendSug.pic }};
+            console.log(`Suggesting the following as a new friend for user ${userId}`);
+            console.log(filtered);
+            return filtered;
+        } else {
+            if (startId < allUsers.length) {
+                startId++;
+            } else {
+                startId = 1;
+            }
+        }
+
+    }
+
+    //if we get here something went wrong
+    //in theory we should have found a friend to suggest, but we didn't
+    //for now return an empty result.
+    console.log(`Something went wrong trying to find a friend for user ${userId}`);
+    return [];
+
 }

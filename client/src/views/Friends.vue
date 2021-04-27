@@ -3,8 +3,13 @@
         <div class="columns">
             
             <div class="column is-one-half">
-                <FindFriends @search="findFriends" />
-                <!-- display search results here -->
+                <div class="box">
+                    <button class="button is-info" @click="findFriends">Find a Friend!</button>
+                </div>
+                <div>
+                    <SuggestedFriends :friend="friendSug" :toggle="suggestionToggle" />
+                </div>
+
                 
             </div>
             
@@ -19,11 +24,13 @@
 <script>
 import FriendsList from '../components/FriendsList.vue';
 import { GetFriends, FindNewFriends } from "../models/Friends";
-import FindFriends from "../components/FindFriends.vue";
+import SuggestedFriends from "../components/SuggestedFriends.vue";
 export default {
   data: ()=> ({
       newFriends: [],
       friends: [],
+      friendSug: {},
+      suggestionToggle: false,
   }),
   async mounted() {
       const friends = await GetFriends();
@@ -32,12 +39,14 @@ export default {
   },
   components: {
     FriendsList,
-    FindFriends
+    SuggestedFriends
   },
   methods: {
-      findFriends() {
-          //this needs to pass the search name, and use the returned freinds
-          FindNewFriends();
+      async findFriends() {
+          const friendResp = await FindNewFriends();
+          this.friendSug = friendResp;
+          this.suggestionToggle = true;
+          console.log(friendResp);
       }
   }
 
