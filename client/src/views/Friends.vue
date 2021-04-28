@@ -25,6 +25,8 @@
 import FriendsList from '../components/FriendsList.vue';
 import { GetFriends, FindNewFriends, AddFriend } from "../models/Friends";
 import SuggestedFriends from "../components/SuggestedFriends.vue";
+import { IsEmptyObject } from "../models/MyErrors";
+
 export default {
   data: ()=> ({
       newFriends: [],
@@ -44,23 +46,24 @@ export default {
   methods: {
       async findFriends() {
           const friendResp = await FindNewFriends();
-          this.friendSug = friendResp;
-          this.suggestionToggle = true;
+          console.log(`friendResp is:`);
           console.log(friendResp);
+          if (!IsEmptyObject(friendResp)) {
+              this.friendSug = friendResp;
+              this.suggestionToggle = true;
+          }
       },
       async addFriend() {
-          console.log(`inside addFriend in Friends.vue, handle is ${this.friendSug.user.handle}`);
-          console.log(`perhaps i nee to pass the entire user/friendSug and parse out the handle inside the api call?`);
           console.log(this.friendSug.user);
           const friend = await AddFriend({handle: this.friendSug.user.handle});
           console.log(`got response from AddFriend with newly added friend: ${friend}`);
           //console.log(friend);
-          if (friend) {
+          if (!IsEmptyObject(friend)) {
             this.friends.unshift(friend);
             console.log(`Friend should have been added correctly to friends list: ${this.friends}`);
           }
-          
-          //I might need to clear the friendSug data here???
+          this.suggestionToggle = false;
+          this.friendSug = {};
       }
   }
 

@@ -1,5 +1,7 @@
 /**
  *  Model for error handling functions
+ *  
+ *  Also putting Empty and null checking function here (for now at least)
  */
 
 import { ToastProgrammatic as toastr } from "buefy";
@@ -11,4 +13,8 @@ export function ToastError(msg) {
         duration: 20000,
         queue: false
     })
+}
+
+export function IsEmptyObject(obj) {
+    return Object.keys(obj).length === 0;
 }
