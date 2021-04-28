@@ -12,6 +12,7 @@ export function FindNewFriends() {
 }
 
 export function AddFriend(handle) {
-    console.log(`about to send an AddFriend request back to the server`);
+    console.log(`about to send an AddFriend request back to the server for handle ${handle}`);
+    console.log(handle);
     return api(`friends/${Session.user.userId}`, handle);
 }

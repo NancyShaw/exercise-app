@@ -12,6 +12,10 @@ const getRandomInt = (max)=> {
     return Math.floor(Math.random()*max) + 1;
 }
 
+const checkIfUserIsAlreadyFriend = (following, handle)=> {
+    return following.some(f=> f.handle == handle.handle);
+}
+
 module.exports.GetFriends = (userId)=> {
     console.log(`retrieving friends for user ${userId}`);
     //first retrieve the friends for userId
@@ -51,7 +55,7 @@ module.exports.FindFriends = (userId)=> {
     for (alluser in allUsers) {
         friendSug = allUsers.find(u => u.userId == startId);
         
-        if (!following.some(f=> f.handle == friendSug.handle) && friendSug.userId != userId) {
+        if (!checkIfUserIsAlreadyFriend(following, friendSug.handle) && friendSug.userId != userId) {
             //filter and return friend suggestion
             
             let filtered = {user: {name:friendSug.name, handle:friendSug.handle, pic:friendSug.pic }};
@@ -80,12 +84,18 @@ module.exports.AddFriend = (userId, handle)=> {
     handle.isApproved = true;
     console.log(handle);
     following = users.GetById(userId)?.following;
-   // const followingItem = { handle, isApproved:true };
+    let fullFollowing = users.GetByHandle(handle.handle);
+    if (checkIfUserIsAlreadyFriend(following, handle)) {
+        console.log(`${handle} is already friends with user ${userId}`);
+        throw { code: 422, msg: "User is already a friend! Please request another friend suggestion!"}
+    } else if (fullFollowing.userId == userId) {
+        console.log(`${handle.handle} belongs to user ${userId}, User cannot be friends with themself!`);
+        throw { code: 422, msg: "A user cannot add themself a friend! Please request another friend suggestion!"}
+    }
     following.push(handle);
-    
     console.log(following);
     console.log(`added ${handle} to friends list of user ${userId}`)
-    let fullFollowing = users.GetByHandle(handle.handle);
+    
     console.log(fullFollowing);
     const filtered = {user: {name:fullFollowing.name, handle:fullFollowing.handle, pic:fullFollowing.pic }};
     

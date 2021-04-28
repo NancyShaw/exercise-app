@@ -49,10 +49,17 @@ export default {
           console.log(friendResp);
       },
       async addFriend() {
-          console.log(`inside addFriend in Friends.vue`);
-          const friend = await AddFriend(this.friendSug.handle);
-          console.log(friend);
-          this.friends.unshift(friend);
+          console.log(`inside addFriend in Friends.vue, handle is ${this.friendSug.user.handle}`);
+          console.log(`perhaps i nee to pass the entire user/friendSug and parse out the handle inside the api call?`);
+          console.log(this.friendSug.user);
+          const friend = await AddFriend({handle: this.friendSug.user.handle});
+          console.log(`got response from AddFriend with newly added friend: ${friend}`);
+          //console.log(friend);
+          if (friend) {
+            this.friends.unshift(friend);
+            console.log(`Friend should have been added correctly to friends list: ${this.friends}`);
+          }
+          
           //I might need to clear the friendSug data here???
       }
   }
