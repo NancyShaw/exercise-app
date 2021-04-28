@@ -45,7 +45,7 @@ module.exports.FindFriends = (userId)=> {
     //user is already friends with everyone, return
     if (following.length == allUsers.length-1) {
         console.log(`User ${userId} is already friends with all other users`);
-        return {};
+        throw { code: 418, msg: "You are already friends with everyone on this app. It's time to turn off your devices and go out into the REAL WORLD!!!"};
     }
 
     //select user from all users (local list, not the class!). if not friend, return as suggestion

@@ -18,3 +18,7 @@ export function ToastError(msg) {
 export function IsEmptyObject(obj) {
     return Object.keys(obj).length === 0;
 }
+
+export function IsNullOrEmptyObject(obj) {
+    return ( obj === undefined ) || IsEmptyObject(obj);
+}
