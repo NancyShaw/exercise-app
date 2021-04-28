@@ -16,3 +16,9 @@ export function AddFriend(handle) {
     console.log(handle);
     return api(`friends/${Session.user.userId}`, handle);
 }
+
+export function DeleteFriend(handle) {
+    console.log(`about to send a DeleteFriend request back to the server for handle:`);
+    console.log(handle);
+    return api(`friends/${Session.user.userId}`, handle, "DELETE");
+}

@@ -53,7 +53,58 @@ const activities_list = [
                 timeMins: 20
             }
         ]
-    }
+    },
+    {
+        userId: 4,
+        activities: [
+            {
+                activity: "Axe Throwing",
+                timeMins: 35
+            },
+            {
+                activity: "Sparing",
+                timeMins: 100
+            },
+            {
+                activity: "Running",
+                timeMins: 20
+            }
+        ]
+    },
+    {
+        userId: 5,
+        activities: [
+            {
+                activity: "Axe Throwing",
+                timeMins: 35
+            },
+            {
+                activity: "Sparing",
+                timeMins: 100
+            },
+            {
+                activity: "Running",
+                timeMins: 20
+            }
+        ]
+    },
+    {
+        userId: 6,
+        activities: [
+            {
+                activity: "Axe Throwing",
+                timeMins: 35
+            },
+            {
+                activity: "Sparing",
+                timeMins: 100
+            },
+            {
+                activity: "Running",
+                timeMins: 20
+            }
+        ]
+    },
 ];
 
 module.exports.CreateInitialActivity = (userId)=> {

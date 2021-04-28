@@ -9,6 +9,9 @@ app
         .post('/:user_id', (req, res)=> {
             res.send( model.AddFriend( req.params.user_id, req.body) );
         })
+        .delete('/:user_id', (req, res)=> {
+            res.send( model.DeleteFriend( req.params.user_id, req.body) );
+        })
         
 
 module.exports = app;

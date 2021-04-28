@@ -14,7 +14,7 @@
             </div>
             
             <div class="column is-one-half">
-                <FriendsList :friends="friends" />
+                <FriendsList :friends="friends" @delete="deleteFriend" />
             </div>
         
         </div>  
@@ -23,7 +23,7 @@
 
 <script>
 import FriendsList from '../components/FriendsList.vue';
-import { GetFriends, FindNewFriends, AddFriend } from "../models/Friends";
+import { GetFriends, FindNewFriends, AddFriend, DeleteFriend } from "../models/Friends";
 import SuggestedFriends from "../components/SuggestedFriends.vue";
 import { IsNullOrEmptyObject } from "../models/MyErrors";
 
@@ -64,7 +64,19 @@ export default {
           }
           this.suggestionToggle = false;
           this.friendSug = {};
+      },
+      async deleteFriend(i) {
+          
+          const handle = await DeleteFriend({handle: i.user.handle});
+          //if response is ok, delete friend from list here too
+          console.log(`user with handle ${handle.handle} was removed from friends`);
+          
+          const toDel = this.friends.find(f=> f.user.handle == handle.handle);
+          
+          this.friends.splice(this.friends.indexOf(toDel), 1);
       }
+
+
   }
 
 }

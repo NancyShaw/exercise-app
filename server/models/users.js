@@ -43,6 +43,36 @@ const list = [
         following: [ {handle: "@ItsTheNose", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
         userId: 3,
     },
+    {
+        name: "Hercules",
+        email: "hercules@greece.org",
+        handle: "@Hero",
+        password: CHEERY_PASSWD,
+        pic: "https://bulma.io/images/placeholders/96x96.png",
+        isAdmin: false,
+        following: [ {handle: "@ItsTheNose", isApproved: true} ],
+        userId: 4,
+    },
+    {
+        name: "Ares",
+        email: "ares@greece.org",
+        handle: "@BattleTime",
+        password: CHEERY_PASSWD,
+        pic: "https://bulma.io/images/placeholders/96x96.png",
+        isAdmin: false,
+        following: [ {handle: "@Hero", isApproved: true}, {handle: "@ItsTheNose", isApproved: true} ],
+        userId: 5,
+    },
+    {
+        name: "Zues",
+        email: "zues@greece.org",
+        handle: "@InCharge",
+        password: CHEERY_PASSWD,
+        pic: "https://bulma.io/images/placeholders/96x96.png",
+        isAdmin: false,
+        following: [ {handle: "@Hero", isApproved: true}, {handle: "@BattleTime", isApproved: true}, {handle: "@Forensics", isApproved: true} ],
+        userId: 6,
+    },
 ];
 
 module.exports.GetAll = ()=> list;

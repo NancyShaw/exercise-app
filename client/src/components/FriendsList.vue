@@ -10,6 +10,9 @@
             :alt="friend.user.name">
             </span>
             {{friend.user.handle}}
+            
+            <button class="delete is-pulled-right" @click.prevent="$emit('delete', friend)"></button>
+            
         </p>
     </article>
 </template>

@@ -43,6 +43,48 @@ const goals = [
         ],
         userId: 3
     },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 4
+    },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 5
+    },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 6
+    },
 ];
 
 module.exports.CreateInitialGoal = (userId)=> {

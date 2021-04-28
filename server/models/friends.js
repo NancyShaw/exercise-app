@@ -13,7 +13,7 @@ const getRandomInt = (max)=> {
 }
 
 const checkIfUserIsAlreadyFriend = (following, handle)=> {
-    return following.some(f=> f.handle == handle.handle);
+    return following.some(f=> f.handle == handle);
 }
 
 module.exports.GetFriends = (userId)=> {
@@ -85,7 +85,7 @@ module.exports.AddFriend = (userId, handle)=> {
     console.log(handle);
     following = users.GetById(userId)?.following;
     let fullFollowing = users.GetByHandle(handle.handle);
-    if (checkIfUserIsAlreadyFriend(following, handle)) {
+    if (checkIfUserIsAlreadyFriend(following, handle.handle)) {
         console.log(`${handle} is already friends with user ${userId}`);
         throw { code: 422, msg: "User is already a friend! Please request another friend suggestion!"}
     } else if (fullFollowing.userId == userId) {
@@ -94,10 +94,26 @@ module.exports.AddFriend = (userId, handle)=> {
     }
     following.push(handle);
     console.log(following);
-    console.log(`added ${handle} to friends list of user ${userId}`)
+    console.log(`added ${handle.handle} to friends list of user ${userId}`)
     
-    console.log(fullFollowing);
     const filtered = {user: {name:fullFollowing.name, handle:fullFollowing.handle, pic:fullFollowing.pic }};
     
     return filtered;
+}
+
+module.exports.DeleteFriend = (userId, handle)=> {
+    console.log(`User ${userId} is attempting to remove ${handle.handle} from from their friend's list`);
+    //get details for userId
+    following = users.GetById(userId)?.following;
+
+    //locate handle in following list, and remove
+    toDel = following.find(f => f.handle == handle.handle);
+    
+    console.log(toDel);
+    
+    following.splice(following.indexOf(toDel), 1);
+    console.log(`hopefully friend was removed from friend's list (and is no longer present):`);
+    console.log(following);
+    return handle;
+
 }
