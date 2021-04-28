@@ -22,7 +22,7 @@ module.exports.GetFriends = (userId)=> {
     let following = users.GetById(userId)?.following;
     if (following == null) {
         console.log(`user ${userId} has no friends!`);
-        // it would be nice to return a placeholder "friend" here
+        
         return [];
     } 
     // now look up the name, handle, and pic for each of these users
@@ -41,8 +41,8 @@ module.exports.FindFriends = (userId)=> {
     //get list of all users
     let allUsers = users.GetAll();
 
-    //if usersList.length-1 = friends.length, 
-    //user is already friends with everyone, return
+    //if usersList.length-1 equals friends.length, 
+    //user is already friends with everyone
     if (following.length == allUsers.length-1) {
         console.log(`User ${userId} is already friends with all other users`);
         throw { code: 418, msg: "You are already friends with everyone on this app. It's time to turn off your devices and go out into the REAL WORLD!!!"};
@@ -85,6 +85,7 @@ module.exports.AddFriend = (userId, handle)=> {
     console.log(handle);
     following = users.GetById(userId)?.following;
     let fullFollowing = users.GetByHandle(handle.handle);
+
     if (checkIfUserIsAlreadyFriend(following, handle.handle)) {
         console.log(`${handle} is already friends with user ${userId}`);
         throw { code: 422, msg: "User is already a friend! Please request another friend suggestion!"}
@@ -92,8 +93,8 @@ module.exports.AddFriend = (userId, handle)=> {
         console.log(`${handle.handle} belongs to user ${userId}, User cannot be friends with themself!`);
         throw { code: 422, msg: "A user cannot add themself a friend! Please request another friend suggestion!"}
     }
+
     following.push(handle);
-    console.log(following);
     console.log(`added ${handle.handle} to friends list of user ${userId}`)
     
     const filtered = {user: {name:fullFollowing.name, handle:fullFollowing.handle, pic:fullFollowing.pic }};
@@ -109,10 +110,8 @@ module.exports.DeleteFriend = (userId, handle)=> {
     //locate handle in following list, and remove
     toDel = following.find(f => f.handle == handle.handle);
     
-    console.log(toDel);
-    
     following.splice(following.indexOf(toDel), 1);
-    console.log(`hopefully friend was removed from friend's list (and is no longer present):`);
+    console.log(`${handle.handle} was removed from user ${userId}'s friend's list (and is no longer present):`);
     console.log(following);
     return handle;
 

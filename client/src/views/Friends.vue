@@ -46,8 +46,7 @@ export default {
   methods: {
       async findFriends() {
           const friendResp = await FindNewFriends();
-          console.log(`friendResp is:`);
-          console.log(friendResp);
+         
           if (!IsNullOrEmptyObject(friendResp)) {
               this.friendSug = friendResp;
               this.suggestionToggle = true;
@@ -69,11 +68,11 @@ export default {
           
           const handle = await DeleteFriend({handle: i.user.handle});
           //if response is ok, delete friend from list here too
-          console.log(`user with handle ${handle.handle} was removed from friends`);
           
           const toDel = this.friends.find(f=> f.user.handle == handle.handle);
           
           this.friends.splice(this.friends.indexOf(toDel), 1);
+          console.log(`user with handle ${handle.handle} was removed from friends`);
       }
 
 
