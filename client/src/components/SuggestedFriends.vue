@@ -11,6 +11,11 @@
             </span>
             {{friend.user.handle}}
         </p>
+        <div class="panel-block">
+            <button @click="$emit('add')" class="button is-link is-outlined is-fullwidth">
+            Add me as a Friend!
+            </button>
+        </div>
     </article>
 </template>
 

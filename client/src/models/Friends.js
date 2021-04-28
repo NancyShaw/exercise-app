@@ -10,3 +10,8 @@ export function GetFriends() {
 export function FindNewFriends() {
     return api(`friends/new/${Session.user.userId}`);
 }
+
+export function AddFriend(handle) {
+    console.log(`about to send an AddFriend request back to the server`);
+    return api(`friends/${Session.user.userId}`, handle);
+}

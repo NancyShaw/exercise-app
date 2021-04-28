@@ -7,7 +7,7 @@
                     <button class="button is-info" @click="findFriends">Find a Friend!</button>
                 </div>
                 <div>
-                    <SuggestedFriends :friend="friendSug" :toggle="suggestionToggle" />
+                    <SuggestedFriends :friend="friendSug" :toggle="suggestionToggle" @add="addFriend" />
                 </div>
 
                 
@@ -23,7 +23,7 @@
 
 <script>
 import FriendsList from '../components/FriendsList.vue';
-import { GetFriends, FindNewFriends } from "../models/Friends";
+import { GetFriends, FindNewFriends, AddFriend } from "../models/Friends";
 import SuggestedFriends from "../components/SuggestedFriends.vue";
 export default {
   data: ()=> ({
@@ -47,6 +47,13 @@ export default {
           this.friendSug = friendResp;
           this.suggestionToggle = true;
           console.log(friendResp);
+      },
+      async addFriend() {
+          console.log(`inside addFriend in Friends.vue`);
+          const friend = await AddFriend(this.friendSug.handle);
+          console.log(friend);
+          this.friends.unshift(friend);
+          //I might need to clear the friendSug data here???
       }
   }
 

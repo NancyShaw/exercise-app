@@ -41,7 +41,7 @@ module.exports.FindFriends = (userId)=> {
     //user is already friends with everyone, return
     if (following.length == allUsers.length-1) {
         console.log(`User ${userId} is already friends with all other users`);
-        return [];
+        return {};
     }
 
     //select user from all users (local list, not the class!). if not friend, return as suggestion
@@ -72,6 +72,22 @@ module.exports.FindFriends = (userId)=> {
     //in theory we should have found a friend to suggest, but we didn't
     //for now return an empty result.
     console.log(`Something went wrong trying to find a friend for user ${userId}`);
-    return [];
+    return {};
 
+}
+
+module.exports.AddFriend = (userId, handle)=> {
+    handle.isApproved = true;
+    console.log(handle);
+    following = users.GetById(userId)?.following;
+   // const followingItem = { handle, isApproved:true };
+    following.push(handle);
+    
+    console.log(following);
+    console.log(`added ${handle} to friends list of user ${userId}`)
+    let fullFollowing = users.GetByHandle(handle.handle);
+    console.log(fullFollowing);
+    const filtered = {user: {name:fullFollowing.name, handle:fullFollowing.handle, pic:fullFollowing.pic }};
+    
+    return filtered;
 }
