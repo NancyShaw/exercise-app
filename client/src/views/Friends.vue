@@ -14,7 +14,7 @@
             </div>
             
             <div class="column is-one-half">
-                <FriendsList :friends="friends" @delete="deleteFriend" />
+                <FriendsList :friends="friends" :toggle="delFriendsToggle" @delete="deleteFriend" />
             </div>
         
         </div>  
@@ -33,6 +33,7 @@ export default {
       friends: [],
       friendSug: {},
       suggestionToggle: false,
+      delFriendsToggle: true,
   }),
   async mounted() {
       const friends = await GetFriends();

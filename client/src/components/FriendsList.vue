@@ -11,7 +11,7 @@
             </span>
             {{friend.user.handle}}
             
-            <button class="delete is-pulled-right" @click.prevent="$emit('delete', friend)"></button>
+            <button class="delete is-pulled-right" v-if="toggle" @click.prevent="$emit('delete', friend)"></button>
             
         </p>
     </article>
@@ -20,7 +20,8 @@
 <script>
 export default {
     props: {
-        friends: Array
+        friends: Array,
+        toggle: Boolean
     }
 
 }
