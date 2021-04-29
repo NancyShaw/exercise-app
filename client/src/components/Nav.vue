@@ -56,9 +56,9 @@
                     <router-link to="/Profile" class="navbar-item">
                       Profile
                     </router-link>
-                    <router-link to="/Admin" class="navbar-item">
+                  <!--  <router-link to="/Admin" class="navbar-item">
                       Admin
-                    </router-link>
+                    </router-link> until I implement a toggle, don't display at all-->
                     <router-link to="/" class="navbar-item">
                       Sign Out
                     </router-link>
@@ -69,7 +69,7 @@
 
 <script>
 export default {
-
+    
 }
 </script>
 
