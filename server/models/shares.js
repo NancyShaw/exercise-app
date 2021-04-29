@@ -88,9 +88,17 @@ module.exports.Add = (share)=> {
     return { ...share };
 }
 
-module.exports.Delete = (share_id)=> {
-    //const share = shares_list[share_id];
-    location = shares_list.indexOf(shares_list.find(s=> s.id == share_id));
+//this is probably not the ideal way to do this, but because of the way everything
+//else is structured it would require too much refactoring to do it otherwise now
+module.exports.Delete = (id, handle)=> {
+    console.log(`user ${handle.handle} is attenpting to delete share with id ${id}`);
+    //check that current user has permission to delete this share
+    share = shares_list.find(s=> s.id == id);
+    console.log(share);
+    if (share.handle != handle.handle) {
+        throw { code: 403, msg: "How would you like it if I came and deleted your posts? Knock it off!"}
+    }
+    location = shares_list.indexOf(shares_list.find(s=> s.id == id));
     removedItem = shares_list.splice(location, 1);
     return removedItem;
 }

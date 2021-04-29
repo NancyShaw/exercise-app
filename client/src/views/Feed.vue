@@ -30,9 +30,10 @@ import Vue from "vue";
 import ContentCard from "../components/ContentCard.vue";
 import ContentCreation from "../components/ContentCreation.vue";
 import FriendsList from '../components/FriendsList.vue';
-import { AddShare, GetMyFeed } from "../models/Posts";
+import { AddShare, GetMyFeed, DeleteShare } from "../models/Posts";
 import { GetFriends } from "../models/Friends";
 import Session from "../models/Session";
+import { IsNullOrEmptyObject } from "../models/MyErrors";
 
 export default Vue.extend({
   data: ()=> ({
@@ -46,6 +47,7 @@ export default Vue.extend({
         const friends = await GetFriends();
         this.friends = friends;
         this.posts = await GetMyFeed();
+        console.log(this.posts);
     },
     components: {
       ContentCard,
@@ -59,8 +61,15 @@ export default Vue.extend({
             this.posts.unshift(share);
             this.newPost = { user: Session.user };
         },
-        deletePost(i) {
-          this.posts.splice(i, 1);
+        async deletePost(i) {
+          console.log(`logging i`);
+          console.log(i);
+          
+          const response = await DeleteShare(this.posts[i].id);
+          //if the response was null or empty, an error was thrown by the server
+          if (!IsNullOrEmptyObject(response)) {
+              this.posts.splice(i, 1);
+          }
         }
     }  
 })

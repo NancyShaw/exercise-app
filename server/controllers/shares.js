@@ -23,6 +23,6 @@ const app = express.Router();
             res.send( model.Add(req.body) );
         })
 
-        .delete('/:share_id', (req,res)=> res.send(model.Delete(req.params.share_id) ) )
+        .delete('/:share_id', (req,res)=> res.send(model.Delete(req.params.share_id, req.body) ) )
         
 module.exports = app;
