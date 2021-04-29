@@ -8,69 +8,72 @@ const activities = require('./activities');
 const SALT_ROUNDS = process.env.SALT_ROUNDS;
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRATION_SECS = process.env.JWT_EXPIRATION_SECS;
-const CHEERY_PASSWD = process.env.CHEERY_PASSWD;
-const ANGUA_PASSWD = process.env.ANGUA_PASSWD;
-const SALLY_PASSWD = process.env.SALLY_PASSWD;
+const HERA_PASSWD = process.env.HERA_PASSWD;
+const APHRODITE_PASSWD = process.env.APHRODITE_PASSWD;
+const HADES_PASSWD = process.env.HADES_PASSWD;
+const HERCULES_PASSWD = process.env.HERCULES_PASSWD;
+const ARES_PASSWD = process.env.ARES_PASSWD;
+const ZUES_PASSWD = process.env.ZUES_PASSWD;
 
 const list = [
     {
-        name: "Sally",
-        email: "sally@uberwald.com",
-        handle: "@ImBatty",
+        name: "Hera",
+        email: "hera@greece.org",
+        handle: "@Mom",
         pic: "https://bulma.io/images/placeholders/96x96.png",
-        password: SALLY_PASSWD,
+        password: HERA_PASSWD,
         isAdmin: false,
-        following: [ {handle: "@ItsTheNose", isApproved: true} ],
+        following: [ {handle: "@Hero", isApproved: true} ],
         userId: 1,
     },
     {
-        name: "Angua",
-        email: "angua@uberwald.com",
-        handle: "@ItsTheNose",
+        name: "Aphrodite",
+        email: "aphrodite@greece.org",
+        handle: "@HotStuff",
         pic: "https://bulma.io/images/placeholders/96x96.png",
-        password: ANGUA_PASSWD,
+        password: APHRODITE_PASSWD,
         isAdmin: true,
-        following: [ {handle: "@Forensics", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
+        following: [ {handle: "@BattleTime", isApproved: true}, {handle: "@Hero", isApproved: true} ],
         userId: 2,
     },
     {
-        name: "Cheery",
-        email: "cheery@uberwald.com",
-        handle: "@Forensics",
-        password: CHEERY_PASSWD,
+        name: "Hades",
+        email: "hades@greece.org",
+        handle: "@MyDogIsCoolerThanYours",
+        password: HADES_PASSWD,
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
-        following: [ {handle: "@ItsTheNose", isApproved: true}, {handle: "@ImBatty", isApproved: true} ],
+        following: [ {handle: "@Hero", isApproved: true}, {handle: "@Hera", isApproved: true}, {handle: "@InCharge", isApproved: true} ],
         userId: 3,
     },
     {
         name: "Hercules",
         email: "hercules@greece.org",
         handle: "@Hero",
-        password: CHEERY_PASSWD,
+        password: HERCULES_PASSWD,
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
-        following: [ {handle: "@ItsTheNose", isApproved: true} ],
+        following: [ {handle: "@HotStuff", isApproved: true} ],
         userId: 4,
     },
     {
         name: "Ares",
         email: "ares@greece.org",
         handle: "@BattleTime",
-        password: CHEERY_PASSWD,
+        password: ARES_PASSWD,
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
-        following: [ {handle: "@Hero", isApproved: true}, {handle: "@ItsTheNose", isApproved: true} ],
+        following: [ {handle: "@Hero", isApproved: true}, {handle: "@MyDogIsCoolerThanYours", isApproved: true} ],
         userId: 5,
     },
     {
         name: "Zues",
         email: "zues@greece.org",
         handle: "@InCharge",
-        password: CHEERY_PASSWD,
+        password: ZUES_PASSWD,
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
-        following: [ {handle: "@Hero", isApproved: true}, {handle: "@BattleTime", isApproved: true}, {handle: "@Forensics", isApproved: true} ],
+        following: [ {handle: "@Hero", isApproved: true}, {handle: "@BattleTime", isApproved: true}, {handle: "@HotStuff", isApproved: true} ],
         userId: 6,
     },
 ];
