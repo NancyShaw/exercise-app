@@ -3,9 +3,7 @@
             <div class="columns is-mobile">
                 <div class="column is-one-half">
                     <CurrentGoals :otherGoals="otherGoals" :daily="daily" />
-                    <div class="box">
-                        Placeholder for where graph showing daily exercise will go.
-                    </div>
+                    
                 </div>
                 <div class="column is-one-half">
                     

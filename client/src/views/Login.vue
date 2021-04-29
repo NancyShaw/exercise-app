@@ -34,22 +34,16 @@
             </div>
 
     </form>
-   <!-- <div class="container">
-        <LoginForm :email="email" :password="password" @login="login" />
-    </div>-->
 </template>
 
 <script>
 import { Login } from "../models/Session";
-//import LoginForm from "../components/LoginForm.vue";
+
 export default {
     data: ()=> ({
         email: null,
         password: null
     }),
-   // components: {
-     //   LoginForm
-    //},
     methods: {
         login() {
             Login(this.email, this.password);

@@ -15,8 +15,8 @@
 <script>
 import ProfileCard from "../components/ProfileCard.vue";
 import UpdateProfileInfo from "../components/UpdateProfileInfo.vue";
-import { GetUser, UpdateUser } from "../models/Users";
-import Session from "../models/Session";
+import { GetUser } from "../models/Users";
+import Session, { UpdateUser } from "../models/Session";
 
 export default {
   data: ()=> ({

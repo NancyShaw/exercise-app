@@ -57,14 +57,11 @@ export default Vue.extend({
     methods: {
         async addPost() {
             const share = await AddShare(this.newPost);
-            console.log(share);
+            
             this.posts.unshift(share);
             this.newPost = { user: Session.user };
         },
         async deletePost(i) {
-          console.log(`logging i`);
-          console.log(i);
-          
           const response = await DeleteShare(this.posts[i].id);
           //if the response was null or empty, an error was thrown by the server
           if (!IsNullOrEmptyObject(response)) {

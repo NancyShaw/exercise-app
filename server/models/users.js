@@ -13,7 +13,7 @@ const APHRODITE_PASSWD = process.env.APHRODITE_PASSWD;
 const HADES_PASSWD = process.env.HADES_PASSWD;
 const HERCULES_PASSWD = process.env.HERCULES_PASSWD;
 const ARES_PASSWD = process.env.ARES_PASSWD;
-const ZUES_PASSWD = process.env.ZUES_PASSWD;
+const ZEUS_PASSWD = process.env.ZEUS_PASSWD;
 
 const list = [
     {
@@ -67,10 +67,10 @@ const list = [
         userId: 5,
     },
     {
-        name: "Zues",
-        email: "zues@greece.org",
+        name: "Zeus",
+        email: "zeus@greece.org",
         handle: "@InCharge",
-        password: ZUES_PASSWD,
+        password: ZEUS_PASSWD,
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
         following: [ {handle: "@Hero", isApproved: true}, {handle: "@BattleTime", isApproved: true}, {handle: "@HotStuff", isApproved: true} ],
@@ -105,11 +105,12 @@ module.exports.Register = async (user)=> {
     goals.CreateInitialGoal(user.userId);
     activities.CreateInitialActivity(user.userId);
 
+    console.log(`registered new user with userId ${user.userId}`);
     //this returns a copy of user without the password
     return { ...user, password: undefined };
     
 }
-//check that this is how I want to do this
+
 module.exports.Login = async (email, password) => {
     const user = list.find(x=> x.email == email);
     if(!user) throw { code: 401, msg: "Wrong Username or Password" };
@@ -121,7 +122,7 @@ module.exports.Login = async (email, password) => {
     const userData = { ...user, password: undefined };
     const token = jwt.sign(userData, JWT_SECRET, { expiresIn: JWT_EXPIRATION_SECS});
 
-    console.log(userData);
+    console.log(`Logging in user ${userData.userId}`);
     return {userData, token};  
 }
 

@@ -130,6 +130,6 @@ module.exports.GetByUserId = (userId)=> {
 module.exports.Add = (userId, record)=> {
     activityItem = activities_list.find(a=> a.userId == userId);
     activityItem.activities.push(record);
-    console.log(activityItem);
+    console.log(`adding activity record for user ${userId}`);
     return { ...record };
 }

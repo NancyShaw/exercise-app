@@ -13,7 +13,6 @@ export function AddOtherGoal(goal) {
 }
 
 export function UpdateDaily(newDaily) {
-    console.log(`inside updateDaily! newDaily equals: ${newDaily}`);
     return api(`goals/${Session.user.userId}`, newDaily, "PATCH");
 }
     

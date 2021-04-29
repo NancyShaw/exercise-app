@@ -79,12 +79,11 @@ module.exports.GetFeed = (handle)=> {
         );
 
     let mappedShares = filterOutUserInfo(filteredShares);
-    console.log(mappedShares);
+    //console.log(mappedShares);
     return mappedShares;
 }
 
 module.exports.Add = (share)=> {
-    console.log(share);
     if (!share.handle) {
         throw { code: 422, msg: "share must have an Owner!" }
     }
@@ -93,7 +92,8 @@ module.exports.Add = (share)=> {
     share.time = Date();
     share.isPublic = true; //right now all posts are public by default
     shares_list.unshift(share);
-    console.log(share);
+    
+    console.log(`Added share for ${share.handle}`);
     return { ...share };
 }
 
@@ -103,7 +103,7 @@ module.exports.Delete = (id, handle)=> {
     console.log(`user ${handle.handle} is attenpting to delete share with id ${id}`);
     //check that current user has permission to delete this share
     share = shares_list.find(s=> s.id == id);
-    console.log(share);
+    
     if (share.handle != handle.handle) {
         throw { code: 403, msg: "How would you like it if I came and deleted your posts? Knock it off!"}
     }

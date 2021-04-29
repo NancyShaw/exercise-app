@@ -30,3 +30,11 @@ export function IsAuthenticated() {
     //return true;
     return Session.user ? true : false;
 }
+
+export function AddUser(user) {
+    api("users/register", user);
+}
+
+export function UpdateUser(user) {
+    return api(`users/${Session.user.userId}`, user, "PATCH");
+}

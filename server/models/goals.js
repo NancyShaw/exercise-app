@@ -108,9 +108,8 @@ module.exports.GetByUserId = (userId)=> {
 }
 
 module.exports.UpdateDaily = (userId, newDaily)=> {
-    console.log("I reached UpdateDaily in my model!!!");
     this.GetByUserId(userId).daily = newDaily.goal;
-    console.log(newDaily);
+    console.log(`updating daily goal to ${newDaily.goal} for user ${userId}`);
     return newDaily;
 }
 
@@ -118,6 +117,7 @@ module.exports.Add = (userId, newGoal)=> {
     goalItem = goals.find(g=> g.userId == userId)
     newGoal.id = goalItem.otherGoals.length;
     goalItem.otherGoals.push(newGoal);
+    console.log(`Added new goal ${newGoal.goal} for user ${userId}`);
     return newGoal;
 }
 

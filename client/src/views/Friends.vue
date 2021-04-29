@@ -54,19 +54,15 @@ export default {
           }
       },
       async addFriend() {
-          console.log(this.friendSug.user);
           const friend = await AddFriend({handle: this.friendSug.user.handle});
-          console.log(`got response from AddFriend with newly added friend: ${friend}`);
           
           if (!IsNullOrEmptyObject(friend)) {
             this.friends.unshift(friend);
-            console.log(`Friend should have been added correctly to friends list: ${this.friends}`);
           }
           this.suggestionToggle = false;
           this.friendSug = {};
       },
       async deleteFriend(i) {
-          
           const handle = await DeleteFriend({handle: i.user.handle});
           //if response is ok, delete friend from list here too
           

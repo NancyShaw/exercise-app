@@ -1,7 +1,7 @@
 /** model for holding user data */
 
 // holds profile info for a specific user
-let profileInfo =
+/*let profileInfo =
     { 
         name: "Sally",
         email: "sally@uberwald.com",
@@ -12,4 +12,4 @@ let profileInfo =
 
 export function GetProfileInfo() {
     return profileInfo;
-}
+}*/
