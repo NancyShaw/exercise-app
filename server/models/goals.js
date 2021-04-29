@@ -13,7 +13,7 @@ const goals = [
                 goal: "Stretch"
             }
         ],
-        user_id: 3
+        userId: 1
     },
     {
         daily: 40,
@@ -27,24 +27,98 @@ const goals = [
                 goal: "Dance more"
             }
         ],
-        user_id: 7
+        userId: 2
+    },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 3
+    },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 4
+    },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 5
+    },
+    {
+        daily: 60,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Stretch"
+            },
+            {
+                id: 2,
+                goal: "Run faster"
+            }
+        ],
+        userId: 6
     },
 ];
 
-module.exports.GetAll = ()=> goals;
-
-module.exports.GetByUserId = (user_id)=> {
-    return goals.find(g=> g.user_id == user_id)
+module.exports.CreateInitialGoal = (userId)=> {
+    const newGoal = { 
+        daily: 20,
+        otherGoals: [
+            {
+                id: 1,
+                goal: "Create some goals!"
+            }
+        ],
+        userId: userId
+    };
+    goals.push(newGoal);
 }
 
-module.exports.UpdateDaily = (user_id, newDaily)=> {
-    this.GetByUserId(user_id).daily = newDaily;
+module.exports.GetAll = ()=> goals;
+
+module.exports.GetByUserId = (userId)=> {
+    return goals.find(g=> g.userId == userId)
+}
+
+module.exports.UpdateDaily = (userId, newDaily)=> {
+    this.GetByUserId(userId).daily = newDaily.goal;
+    console.log(`updating daily goal to ${newDaily.goal} for user ${userId}`);
     return newDaily;
 }
 
-module.exports.Add = (user_id, newGoal)=> {
-    goalItem = goals.find(g=> g.user_id == user_id)
+module.exports.Add = (userId, newGoal)=> {
+    goalItem = goals.find(g=> g.userId == userId)
     newGoal.id = goalItem.otherGoals.length;
     goalItem.otherGoals.push(newGoal);
+    console.log(`Added new goal ${newGoal.goal} for user ${userId}`);
     return newGoal;
 }
+
+//TODO: implement delete goal

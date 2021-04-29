@@ -26,6 +26,7 @@
             {{post.caption}}
             <br />
             <time :datetime="post.time">{{post.time}}</time>
+            <span v-show="false">{{post.id}}</span>
           </div>
       </div>
   </div>

@@ -30,21 +30,24 @@ import Vue from "vue";
 import ContentCard from "../components/ContentCard.vue";
 import ContentCreation from "../components/ContentCreation.vue";
 import FriendsList from '../components/FriendsList.vue';
-import { GetMyFeed } from "../models/Posts";
+import { AddShare, GetMyFeed, DeleteShare } from "../models/Posts";
 import { GetFriends } from "../models/Friends";
+import Session from "../models/Session";
+import { IsNullOrEmptyObject } from "../models/MyErrors";
 
 export default Vue.extend({
   data: ()=> ({
         friends: [],
         newPost: {
-            user: {
-            }
+            user: Session.user
         },
         posts: []
     }),
-    mounted() {
-        this.friends = GetFriends();
-        this.posts = GetMyFeed();
+    async mounted() {
+        const friends = await GetFriends();
+        this.friends = friends;
+        this.posts = await GetMyFeed();
+        console.log(this.posts);
     },
     components: {
       ContentCard,
@@ -52,12 +55,18 @@ export default Vue.extend({
       FriendsList
     },
     methods: {
-        addPost() {
-            this.posts.unshift(this.newPost);
-            this.newPost = { user: {} };
+        async addPost() {
+            const share = await AddShare(this.newPost);
+            
+            this.posts.unshift(share);
+            this.newPost = { user: Session.user };
         },
-        deletePost(i) {
-          this.posts.splice(i, 1);
+        async deletePost(i) {
+          const response = await DeleteShare(this.posts[i].id);
+          //if the response was null or empty, an error was thrown by the server
+          if (!IsNullOrEmptyObject(response)) {
+              this.posts.splice(i, 1);
+          }
         }
     }  
 })

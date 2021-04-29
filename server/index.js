@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
@@ -9,11 +10,13 @@ const { AuthenticateToken } = require('./controllers/security');
 const usersCtrl = require('./controllers/users');
 const sharesCtrl = require('./controllers/shares');
 const goalsCtrl = require('./controllers/goals');
+const friendsCtrl = require('./controllers/friends');
 const activitiesCtrl = require('./controllers/activities');
 
 app
     .use(express.json())
     .use(express.static('./docs'))
+    .use(cors())
 
     //route all incoming traffic to the landing page to start
     .get('/', (req, res) => {
@@ -23,8 +26,9 @@ app
     //mounting controllers
     .use('/users', usersCtrl)
     .use('/shares', AuthenticateToken, sharesCtrl)
-    .use('/goals', goalsCtrl)
-    .use('/activities', activitiesCtrl)
+    .use('/goals', AuthenticateToken, goalsCtrl)
+    .use('/friends', AuthenticateToken, friendsCtrl)
+    .use('/activities', AuthenticateToken, activitiesCtrl)
 
     .get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../docs/index.html') );

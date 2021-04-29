@@ -1,9 +1,9 @@
 /** model for holding user data */
 
 // holds profile info for a specific user
-let profileInfo =
+/*let profileInfo =
     { 
-        nomedeplume: "Sally",
+        name: "Sally",
         email: "sally@uberwald.com",
         handle: "ImBatty",
         pic: "https://bulma.io/images/placeholders/96x96.png",
@@ -12,9 +12,4 @@ let profileInfo =
 
 export function GetProfileInfo() {
     return profileInfo;
-}
-
-export function UpdateInfo(info) {
-    profileInfo.pic = info.pic;
-    return profileInfo;
-}
+}*/

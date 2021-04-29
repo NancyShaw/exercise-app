@@ -6,10 +6,13 @@
         <p class="panel-block" v-for="(friend, i) in friends" :key="i">
             <span class="panel-icon">
             <img 
-            :src="friend.friend.src" 
-            :alt="friend.friend.alt">
+            :src="friend.user.pic" 
+            :alt="friend.user.name">
             </span>
-            {{friend.friend.handle}}
+            {{friend.user.handle}}
+            
+            <button class="delete is-pulled-right" v-if="toggle" @click.prevent="$emit('delete', friend)"></button>
+            
         </p>
     </article>
 </template>
@@ -17,7 +20,8 @@
 <script>
 export default {
     props: {
-        friends: Array
+        friends: Array,
+        toggle: Boolean
     }
 
 }

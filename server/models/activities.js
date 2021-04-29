@@ -4,14 +4,31 @@
 //TODO: add a date field
 const activities_list = [
     {
-        user_id: 1,
+        userId: 1,
         activities: [
             {
-                type: "running",
+                activity: "running",
                 timeMins: 30
             },
             {
-                type: "climbing",
+                activity: "climbing",
+                timeMins: 120
+            },
+            {
+                activity: "dance",
+                timeMins: 45
+            }
+        ]
+    },
+    {
+        userId: 2,
+        activities: [
+            {
+                activity: "running",
+                timeMins: 30
+            },
+            {
+                activity: "climbing",
                 timeMins: 120
             },
             {
@@ -21,32 +38,98 @@ const activities_list = [
         ]
     },
     {
-        user_id: 2,
+        userId: 3,
         activities: [
             {
-                type: "running",
-                timeMins: 30
+                activity: "Axe Throwing",
+                timeMins: 35
             },
             {
-                type: "climbing",
-                timeMins: 120
+                activity: "Sparing",
+                timeMins: 100
             },
             {
-                type: "dance",
-                timeMins: 45
+                activity: "Running",
+                timeMins: 20
             }
         ]
-    }
+    },
+    {
+        userId: 4,
+        activities: [
+            {
+                activity: "Axe Throwing",
+                timeMins: 35
+            },
+            {
+                activity: "Sparing",
+                timeMins: 100
+            },
+            {
+                activity: "Running",
+                timeMins: 20
+            }
+        ]
+    },
+    {
+        userId: 5,
+        activities: [
+            {
+                activity: "Axe Throwing",
+                timeMins: 35
+            },
+            {
+                activity: "Sparing",
+                timeMins: 100
+            },
+            {
+                activity: "Running",
+                timeMins: 20
+            }
+        ]
+    },
+    {
+        userId: 6,
+        activities: [
+            {
+                activity: "Axe Throwing",
+                timeMins: 35
+            },
+            {
+                activity: "Sparing",
+                timeMins: 100
+            },
+            {
+                activity: "Running",
+                timeMins: 20
+            }
+        ]
+    },
 ];
 
-module.exports.GetByUserId = (user_id)=> {
-    //TODO: maybe calculate total time here, and return with activities list
-    return activities_list.find(a=> a.user_id == user_id)
+module.exports.CreateInitialActivity = (userId)=> {
+    const newActivity = {
+        userId: userId,
+        activities: [
+            {
+                activity: "Registering for Exercise App!",
+                timeMins: 3
+            }
+        ]
+    };
+    activities_list.push(newActivity);
 }
 
-module.exports.Add = (user_id, record)=> {
-    activityItem = activities_list.find(a=> a.user_id == user_id);
+module.exports.GetByUserId = (userId)=> {
+    //TODO: maybe calculate total time here, and return with activities list
+    const userData = activities_list.find(a=> a.userId == userId);
+    //TODO: add null check
+    return userData.activities;
+}
+
+module.exports.Add = (userId, record)=> {
+    activityItem = activities_list.find(a=> a.userId == userId);
     activityItem.activities.push(record);
-    //consider whether I want to return the entire list, or just the new record
-    return activityItem;
+    console.log(`adding activity record for user ${userId}`);
+    return { ...record };
 }

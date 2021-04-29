@@ -5,8 +5,10 @@
 </template>
 
 <script>
-import { AddUser } from "../models/Users";
+//import { AddUser } from "../models/Users";
 import AccountCreation from "../components/AccountCreation.vue";
+import { AddUser } from "../models/Session";
+
 export default {
     data: ()=> ({
         newUser: {}
@@ -15,8 +17,8 @@ export default {
         AccountCreation
     },
     methods: {
-        signup() {
-            AddUser(this.newUser);
+        async signup() {
+            await AddUser(this.newUser);
             this.$router.push('/');
         }
     }

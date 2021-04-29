@@ -1,31 +1,13 @@
 /** model to hold exercise/activity information */
 
-const activities = [
-    {
-        activity: "running",
-        timeMins: 30
-    },
-    {
-        activity: "climbing",
-        timeMins: 120
-    },
-    {
-        activity: "dance",
-        timeMins: 45
-    },
-];
+import { api } from "../connections/myFetch";
+import Session from "./Session";
 
 export function GetActivities() {
-    return activities;
-}
-
-export function GetTotalTime() {
-    var total = 0;
-    activities.forEach(a => total+= a.timeMins);
-    
-    return total;
+    return api(`activities/${Session.user.userId}`);
 }
 
 export function AddActivities(record) {
-    activities.unshift(record);
+    return api(`activities/${Session.user.userId}`, record);
+    //TODO: figure out why this is no longer reactive
 }

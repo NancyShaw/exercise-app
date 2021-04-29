@@ -3,7 +3,7 @@
 
         <div class="card-image">
             <figure class="image is-square">
-                <img :src="info.pic" :alt="info.handle">
+                <img :src="info.pic" :alt="info.name">
             </figure>
         </div>
         <div class="card-content">
@@ -16,7 +16,7 @@
                         <span class="panel-icon">
                             <i class="fas fa-book" aria-hidden="true"></i>
                         </span>
-                        {{info.nomedeplume}}
+                        {{info.name}}
                     </p>
                     <p class="panel-block">
                         <span class="panel-icon">

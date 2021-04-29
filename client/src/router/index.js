@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Landing from '@/views/Landing.vue';
 import Login from '@/views/Login.vue';
 import SignUp from '@/views/SignUp.vue';
-import { IsAuthenticated } from '../models/Session';
+import Session, { IsAuthenticated } from '../models/Session';
 
 Vue.use(VueRouter)
 
@@ -119,6 +119,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if(to.meta.requiresAuth && !IsAuthenticated()) {
+    Session.nextRoute = to;
     next('/login')
   }
   else {

@@ -3,9 +3,7 @@
             <div class="columns is-mobile">
                 <div class="column is-one-half">
                     <CurrentGoals :otherGoals="otherGoals" :daily="daily" />
-                    <div class="box">
-                        Placeholder for where graph showing daily exercise will go.
-                    </div>
+                    
                 </div>
                 <div class="column is-one-half">
                     
@@ -18,7 +16,7 @@
 
 <script>
 import CurrentGoals from "../components/CurrentGoals"
-import { GetOtherGoals, GetDailyGoal } from "../models/Goals";
+import { GetGoals } from "../models/Goals";
 import ActivitySummary from "../components/ActivitySummary.vue";
 import { GetActivities } from "../models/Activities";
 
@@ -28,10 +26,14 @@ export default {
         daily: {},
         activities: [],
     }),
-    mounted() {
-        this.otherGoals = GetOtherGoals();
-        this.daily = GetDailyGoal();
-        this.activities = GetActivities();
+    async mounted() {
+        const goals = await GetGoals();
+        console.log(goals);
+        this.daily = { goal: goals.daily };
+        this.otherGoals = goals.otherGoals;
+        
+        this.activities = await GetActivities();
+        console.log(this.activities);
     },
     components: {
         CurrentGoals,

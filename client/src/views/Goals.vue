@@ -14,7 +14,7 @@
 import CurrentGoals from "../components/CurrentGoals.vue";
 import AddGoal from "../components/AddGoal.vue";
 import UpdateDailyGoal from "../components/UpdateDailyGoal.vue";
-import { GetOtherGoals, GetDailyGoal, UpdateDaily } from "../models/Goals";
+import { UpdateDaily, GetGoals, AddOtherGoal } from "../models/Goals";
 import Vue from "vue";
 
 export default Vue.extend( {
@@ -24,9 +24,11 @@ export default Vue.extend( {
         daily: {},
         newDaily: {}
     }),
-    mounted() {
-        this.otherGoals = GetOtherGoals();
-        this.daily = GetDailyGoal();
+    async mounted() {
+        const goals = await GetGoals();
+        console.log(goals);
+        this.daily = { goal: goals.daily };
+        this.otherGoals = goals.otherGoals;
     },
     components: {
         CurrentGoals,
@@ -34,12 +36,15 @@ export default Vue.extend( {
         UpdateDailyGoal
     },
     methods: {
-        addGoal(){
-            this.otherGoals.unshift(this.newGoal);
+        async addGoal(){
+            const goal = await AddOtherGoal(this.newGoal);
+            this.otherGoals.unshift(goal);
             this.newGoal = {};
         },
-        updateDailyGoal() {
-            UpdateDaily(this.newDaily);
+        async updateDailyGoal() {
+            const mystery = await UpdateDaily(this.newDaily);
+            console.log(mystery);
+            this.daily = mystery;
         }  
     }
     

@@ -11,7 +11,7 @@ app
         .post('/:user_id', (req, res)=> {
             res.send( model.Add( req.params.user_id, req.body) );
         })
-        .patch('/user_id', (req, res)=> {
+        .patch('/:user_id', (req, res)=> { 
             res.send( model.UpdateDaily( req.params.user_id, req.body) );
         })
         

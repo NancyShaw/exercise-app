@@ -24,16 +24,18 @@ export default Vue.extend( {
         newActivity: {},
         activities: [],
     }),
-    mounted() {
-        this.activities = GetActivities();
+    async mounted() {
+        this.activities = await GetActivities();
     },
     components: {
         ActivitySummary,
         AddActivity
     },
     methods: {
-        addActivity() {
-            AddActivities(this.newActivity);
+        async addActivity() {
+            const newRecord = await AddActivities(this.newActivity);
+            console.log(newRecord);
+            this.activities.unshift(newRecord);
         }
     },
     computed: {
