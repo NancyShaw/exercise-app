@@ -36,9 +36,9 @@
             <div class="field">
                 <label class="label has-icons-right">
                     Password
-                    <span class="icon is-small is-right">
+                  <!--  <span class="icon is-small is-right">
                         <i class="fas fa-info-circle"></i>
-                    </span>
+                    </span> commenting this out until I have time to create the toaster tool tip-->
                 </label>
                 <div class="control has-icons-left">
                     <input class="input" type="password" placeholder="Password" v-model="newUser.password" />
