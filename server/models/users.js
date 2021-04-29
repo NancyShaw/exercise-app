@@ -94,6 +94,7 @@ module.exports.Register = async (user)=> {
     // add ID
     user.userId = list[list.length-1].userId + 1;
     user.isAdmin = false; // isAdmin to false by default
+    user.following = []; // make the world a better place by initializing this!
 
     list.push(user);
 

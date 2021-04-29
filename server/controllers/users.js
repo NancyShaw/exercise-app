@@ -12,7 +12,6 @@ const app = express.Router();
             res.send( model.GetById( req.params.user_id ) );
         })
         .post('/register', (req, res, next)=> {
-            console.log(req);
             model.Register(req.body)
             .then(user=> res.send( user ))
             .catch(next);

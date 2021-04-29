@@ -13,7 +13,7 @@ const getRandomInt = (max)=> {
 }
 
 const checkIfUserIsAlreadyFriend = (following, handle)=> {
-    return following.some(f=> f.handle == handle);
+    return following?.some(f=> f.handle == handle);
 }
 
 module.exports.GetFriends = (userId)=> {
@@ -43,7 +43,7 @@ module.exports.FindFriends = (userId)=> {
 
     //if usersList.length-1 equals friends.length, 
     //user is already friends with everyone
-    if (following.length == allUsers.length-1) {
+    if (following?.length == allUsers.length-1) {
         console.log(`User ${userId} is already friends with all other users`);
         throw { code: 418, msg: "You are already friends with everyone on this app. It's time to turn off your devices and go out into the REAL WORLD!!!"};
     }
@@ -94,9 +94,14 @@ module.exports.AddFriend = (userId, handle)=> {
         throw { code: 422, msg: "A user cannot add themself a friend! Please request another friend suggestion!"}
     }
 
-    following.push(handle);
-    console.log(`added ${handle.handle} to friends list of user ${userId}`)
+    if (following === undefined) {
+        users.GetById(userId).following = [ handle ];
+    } else {
+        following.push(handle);
+    }
     
+    console.log(`added ${handle.handle} to friends list of user ${userId}`)
+    console.log(following);
     const filtered = {user: {name:fullFollowing.name, handle:fullFollowing.handle, pic:fullFollowing.pic }};
     
     return filtered;

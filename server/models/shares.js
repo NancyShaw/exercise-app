@@ -64,11 +64,11 @@ module.exports.GetWall = (handle)=> {
 }
 
 module.exports.GetFeed = (handle)=> {
-    var filteredShares = listWithOwner().filter(share=>
+    let filteredShares = listWithOwner()?.filter(share=>
             share.handle == handle ||  
-            users.GetByHandle(handle).following.some(f=> f.handle == share.handle && f.isApproved) 
+            users.GetByHandle(handle).following?.some(f=> f.handle == share.handle && f.isApproved) 
         );
-    console.log(filteredShares);
+
     let mappedShares = filterOutUserInfo(filteredShares);
     console.log(mappedShares);
     return mappedShares;
