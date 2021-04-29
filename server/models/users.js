@@ -43,7 +43,7 @@ const list = [
         password: HADES_PASSWD,
         pic: "https://bulma.io/images/placeholders/96x96.png",
         isAdmin: false,
-        following: [ {handle: "@Hero", isApproved: true}, {handle: "@Hera", isApproved: true}, {handle: "@InCharge", isApproved: true} ],
+        following: [ {handle: "@Hero", isApproved: true}, {handle: "@Mom", isApproved: true}, {handle: "@InCharge", isApproved: true} ],
         userId: 3,
     },
     {
