@@ -12,12 +12,12 @@
                 <div>
                     <section>
                         <p class="content"><b>Selected:</b> {{ selected }}</p>
-                        <b-field label="Find a JS framework">
+                        <b-field label="Search for other users by handle!">
                             <b-autocomplete
                                 rounded
                                 v-model="name"
                                 :data="searchResp"
-                                placeholder="e.g. jQuery"
+                                placeholder="e.g. @AlmostDone"
                                 icon="magnify"
                                 clearable
                                 @typing="searchFriends"
@@ -45,7 +45,6 @@ import FriendsList from '../components/FriendsList.vue';
 import { GetFriends, FindNewFriends, AddFriend, DeleteFriend } from "../models/Friends";
 import SuggestedFriends from "../components/SuggestedFriends.vue";
 import { IsNullOrEmptyObject } from "../models/MyErrors";
-//import FriendSearch from "../components/FriendSearch.vue"
 import { SearchUsers } from '../models/Users';
 
 export default {
@@ -69,7 +68,6 @@ export default {
   components: {
     FriendsList,
     SuggestedFriends,
-    //FriendSearch,
   },
   methods: {
       async findFriends() {
@@ -103,18 +101,7 @@ export default {
           console.log(respList);
           this.searchResp = []
           respList.forEach((user) => this.searchResp.push(user.user.handle));
-          //this.searchResp.push(respList);
       },
-     /* computed: {
-            filteredDataArray() {
-                this.data.filter((option) => {
-                    return option
-                        .toString()
-                        .toLowerCase()
-                        .indexOf(this.name.toLowerCase()) >= 0
-                })
-            }
-        } */
 
 
   }

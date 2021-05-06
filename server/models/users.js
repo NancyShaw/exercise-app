@@ -92,8 +92,6 @@ module.exports.GetByHandle = (handle)=> ({ ...list.find( (x, i)=> x.handle == ha
 module.exports.Search = (searchString)=> {
     console.log(`Searching for users with handles starting with ${searchString}`);
     let filteredList = list.filter(u=> u.handle.toLowerCase().startsWith(searchString.toLowerCase()));
-    console.log(`filtered list is:`);
-    console.log(filteredList);
     let superFilteredList = filterUserInfo(filteredList);
     return superFilteredList;
 }

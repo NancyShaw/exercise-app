@@ -11,6 +11,9 @@ const app = express.Router();
         .get('/:user_id', AuthenticateToken, (req, res) => {
             res.send( model.GetById( req.params.user_id ) );
         })
+        .get('/search/:search_str', (req, res)=> {
+            res.send( model.Search( req.params.search_str ) );
+        })
         .post('/register', (req, res, next)=> {
             model.Register(req.body)
             .then(user=> res.send( user ))
@@ -21,10 +24,6 @@ const app = express.Router();
             .then(user=> res.send( user ))
             .catch(next);
         })
-        .get('/search/:search_str', (req, res)=> {
-            res.send( model.Search( req.params.search_str ) );
-        })
-
         .patch('/:user_id', AuthenticateToken, (req, res)=> {
             res.send( model.Update(req.params.user_id, req.body) )
         })
