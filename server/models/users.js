@@ -78,11 +78,25 @@ const list = [
     },
 ];
 
+//I now have this in 2 places, I really should do some refactoring and start a util class
+const filterUserInfo = ((userItems)=> {
+    return userItems.map(u=> ({user:{ handle:u.handle}}));
+})
+
 module.exports.GetAll = ()=> list;
 
 module.exports.GetById = (userId)=> ({ ...list.find( (x, i)=> x.userId == userId ), password: undefined });
 
 module.exports.GetByHandle = (handle)=> ({ ...list.find( (x, i)=> x.handle == handle ), password: undefined });
+
+module.exports.Search = (searchString)=> {
+    console.log(`Searching for users with handles starting with ${searchString}`);
+    let filteredList = list.filter(u=> u.handle.toLowerCase().startsWith(searchString.toLowerCase()));
+    console.log(`filtered list is:`);
+    console.log(filteredList);
+    let superFilteredList = filterUserInfo(filteredList);
+    return superFilteredList;
+}
 
 module.exports.Register = async (user)=> {
 

@@ -9,6 +9,25 @@
                 <div>
                     <SuggestedFriends :friend="friendSug" :toggle="suggestionToggle" @add="addFriend" />
                 </div>
+                <div>
+                    <section>
+                        <p class="content"><b>Selected:</b> {{ selected }}</p>
+                        <b-field label="Find a JS framework">
+                            <b-autocomplete
+                                rounded
+                                v-model="name"
+                                :data="searchResp"
+                                placeholder="e.g. jQuery"
+                                icon="magnify"
+                                clearable
+                                @typing="searchFriends"
+                                @select="option => selected = option">
+                                <template #empty>No results found</template>
+                            </b-autocomplete>
+                        </b-field>
+                    </section>
+                </div>
+
 
                 
             </div>
@@ -26,6 +45,8 @@ import FriendsList from '../components/FriendsList.vue';
 import { GetFriends, FindNewFriends, AddFriend, DeleteFriend } from "../models/Friends";
 import SuggestedFriends from "../components/SuggestedFriends.vue";
 import { IsNullOrEmptyObject } from "../models/MyErrors";
+//import FriendSearch from "../components/FriendSearch.vue"
+import { SearchUsers } from '../models/Users';
 
 export default {
   data: ()=> ({
@@ -34,6 +55,11 @@ export default {
       friendSug: {},
       suggestionToggle: false,
       delFriendsToggle: true,
+      searchResp: [],
+      data: [],
+                name: '',
+                selected: null
+            
   }),
   async mounted() {
       const friends = await GetFriends();
@@ -42,7 +68,8 @@ export default {
   },
   components: {
     FriendsList,
-    SuggestedFriends
+    SuggestedFriends,
+    //FriendSearch,
   },
   methods: {
       async findFriends() {
@@ -70,7 +97,24 @@ export default {
           
           this.friends.splice(this.friends.indexOf(toDel), 1);
           console.log(`user with handle ${handle.handle} was removed from friends`);
-      }
+      },
+      async searchFriends(searchString) {
+          const respList = await SearchUsers(searchString);
+          console.log(respList);
+          this.searchResp = []
+          respList.forEach((user) => this.searchResp.push(user.user.handle));
+          //this.searchResp.push(respList);
+      },
+     /* computed: {
+            filteredDataArray() {
+                this.data.filter((option) => {
+                    return option
+                        .toString()
+                        .toLowerCase()
+                        .indexOf(this.name.toLowerCase()) >= 0
+                })
+            }
+        } */
 
 
   }

@@ -21,6 +21,10 @@ const app = express.Router();
             .then(user=> res.send( user ))
             .catch(next);
         })
+        .get('/search/:search_str', (req, res)=> {
+            res.send( model.Search( req.params.search_str ) );
+        })
+
         .patch('/:user_id', AuthenticateToken, (req, res)=> {
             res.send( model.Update(req.params.user_id, req.body) )
         })
